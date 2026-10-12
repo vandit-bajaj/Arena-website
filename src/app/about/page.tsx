@@ -102,9 +102,9 @@ export default async function AboutPage() {
           </p>
           <p>
             With the rallying motto <span className="italic font-semibold text-blue-900">&ldquo;{config.tagline}&rdquo;</span>,
-            Arena fosters sportsmanship, team resilience, and fitness across nine sanctioned sports:
-            Basketball, Football, Badminton, Table Tennis, Volleyball, Chess, Kabaddi, Cricket, and
-            Hockey.
+            Arena fosters sportsmanship, team resilience, and fitness across eleven sanctioned sports:
+            Cricket, Football, Basketball, Volleyball, Kabaddi, Lawn Tennis, Athletics, Badminton,
+            Chess, Table Tennis, and Carom (Mixed).
           </p>
         </div>
 

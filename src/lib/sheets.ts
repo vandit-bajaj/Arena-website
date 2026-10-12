@@ -9,6 +9,7 @@ import {
   Department,
   SportSchema,
   Sport,
+  OFFICIAL_GAMES_INFO,
   PlayerSchema,
   Player,
   MatchSchema,
@@ -178,16 +179,72 @@ export async function getDepartments(): Promise<Department[]> {
 export async function getSports(): Promise<Sport[]> {
   try {
     const rawRows = await fetchSheetRows('Sports');
-    const sports: Sport[] = [];
+    const sportsMap = new Map<string, Sport>();
 
     for (const row of rawRows) {
-      const parsed = SportSchema.safeParse(row);
+      const sportId = (row.sport_id || '').trim().toLowerCase();
+      if (!sportId) continue;
+
+      const official = OFFICIAL_GAMES_INFO[sportId];
+
+      const nos =
+        row.nos_of_players ||
+        row.players_required ||
+        row['Nos of Players'] ||
+        row['nos of players'] ||
+        row.team_size ||
+        (official ? official.nos_of_players : '') ||
+        '';
+
+      const enrichedRow = {
+        ...row,
+        nos_of_players: nos,
+        has_boys:
+          row.has_boys !== undefined && row.has_boys !== ''
+            ? row.has_boys
+            : official
+            ? official.has_boys
+            : null,
+        has_girls:
+          row.has_girls !== undefined && row.has_girls !== ''
+            ? row.has_girls
+            : official
+            ? official.has_girls
+            : null,
+        display_order:
+          row.display_order !== undefined && row.display_order !== ''
+            ? row.display_order
+            : official
+            ? official.display_order
+            : 99,
+      };
+
+      const parsed = SportSchema.safeParse(enrichedRow);
       if (parsed.success) {
-        sports.push(parsed.data);
+        sportsMap.set(parsed.data.sport_id.toLowerCase(), parsed.data);
       } else {
         console.warn('[Sheets] Skipping malformed Sport row:', row, parsed.error.format());
       }
     }
+
+    // Ensure all 11 official games from the circular exist
+    for (const [key, info] of Object.entries(OFFICIAL_GAMES_INFO)) {
+      if (!sportsMap.has(key)) {
+        sportsMap.set(key, {
+          sport_id: key,
+          name: info.name,
+          has_boys: info.has_boys,
+          has_girls: info.has_girls,
+          nos_of_players: info.nos_of_players,
+          display_order: info.display_order,
+        });
+      }
+    }
+
+    // Only include official circular games (unless user explicitly added custom sport with valid ID)
+    const sports = Array.from(sportsMap.values()).filter((s) => {
+      return OFFICIAL_GAMES_INFO[s.sport_id.toLowerCase()] !== undefined;
+    });
 
     // Sort by display_order
     sports.sort((a, b) => a.display_order - b.display_order);
@@ -196,7 +253,17 @@ export async function getSports(): Promise<Sport[]> {
     return sports;
   } catch (err) {
     console.warn('[Sheets] getSports fallback triggered:', err);
-    return lastGoodDataCache.sports || [];
+    return (
+      lastGoodDataCache.sports ||
+      Object.entries(OFFICIAL_GAMES_INFO).map(([key, info]) => ({
+        sport_id: key,
+        name: info.name,
+        has_boys: info.has_boys,
+        has_girls: info.has_girls,
+        nos_of_players: info.nos_of_players,
+        display_order: info.display_order,
+      }))
+    );
   }
 }
 

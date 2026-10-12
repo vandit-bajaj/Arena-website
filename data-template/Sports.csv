@@ -1,10 +1,12 @@
-sport_id,name,has_boys,has_girls,display_order
-basketball,Basketball,,,1
-table-tennis,Table Tennis,,,2
-kabaddi,Kabaddi,,,3
-football,Football,,,4
-volleyball,Volleyball,,,5
-cricket,Cricket,,,6
-badminton,Badminton,,,7
-chess,Chess,,,8
-hockey,Hockey,,,9
+sport_id,name,has_boys,has_girls,nos_of_players,display_order
+cricket,Cricket,true,true,"Man-15, Women-8",1
+football,Football,true,true,"Man-15, Women-8",2
+basketball,Basketball,true,true,"Man-8, Women-6",3
+volleyball,Volleyball,true,true,"Man-10, Women-(6-8)",4
+kabaddi,Kabaddi,true,true,"Man-8, Women-6",5
+lawn-tennis,Lawn Tennis,true,true,"Open to all",6
+athletics,Athletics,true,true,"Open to all",7
+badminton,Badminton,true,true,"Open to all",8
+chess,Chess,true,true,"Open to all",9
+table-tennis,Table Tennis,true,true,"Open to all",10
+carom,Carom (Mixed),true,true,"Open to all",11

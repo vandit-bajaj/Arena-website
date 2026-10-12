@@ -27,11 +27,25 @@ All website content is driven dynamically by your single Google Spreadsheet.
 1. Go to the **`Players`** tab.
 2. Paste your department participant list:
    - `dept_id`: Short department code (e.g., `CSE`, `ME`, `ECE`) matching the `Departments` tab.
-   - `sport_id`: Kebab-case sport ID (`basketball`, `football`, `badminton`, `table-tennis`, `volleyball`, `chess`, `kabaddi`, `cricket`, `hockey`).
-   - `category`: `Boys` or `Girls`.
+   - `sport_id`: Kebab-case sport ID (`cricket`, `football`, `basketball`, `volleyball`, `kabaddi`, `lawn-tennis`, `athletics`, `badminton`, `chess`, `table-tennis`, `carom`).
+   - `category`: `Boys` or `Girls` (or `Mixed` for Carom).
    - `player_name`: Full name of the student.
    - `roll_no`: Exact DTU roll number (e.g. `2K22/CO/123`).
-3. The site's `/teams` page updates automatically. Players can search by name or roll number immediately.
+3. **Official Squad Requirements (DTU Notification)**:
+   | Ser No | Sport | Sport ID | Required Players |
+   | :--- | :--- | :--- | :--- |
+   | 1. | Cricket | `cricket` | Man-15, Women-8 |
+   | 2. | Football | `football` | Man-15, Women-8 |
+   | 3. | Basketball | `basketball` | Man-8, Women-6 |
+   | 4. | Volleyball | `volleyball` | Man-10, Women-(6-8) |
+   | 5. | Kabaddi | `kabaddi` | Man-8, Women-6 |
+   | 6. | Lawn Tennis | `lawn-tennis` | Open to all |
+   | 7. | Athletics | `athletics` | Open to all |
+   | 8. | Badminton | `badminton` | Open to all |
+   | 9. | Chess | `chess` | Open to all |
+   | 10. | Table Tennis | `table-tennis` | Open to all |
+   | 11. | Carom (Mixed) | `carom` | Open to all |
+4. The site's `/teams` page updates automatically. Players can search by name or roll number immediately.
 
 ---
 

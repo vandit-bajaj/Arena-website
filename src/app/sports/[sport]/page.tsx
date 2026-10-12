@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { getSports, getMatches, getPlayers, getDepartments } from '@/lib/sheets';
 import { SportDetailView } from './SportDetailView';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Users } from 'lucide-react';
 
 interface SportPageProps {
   params: Promise<{
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: SportPageProps): Promise<Meta
 
   return {
     title: `${sport.name} | Arena 2026 DTU`,
-    description: `Fixtures, results, and department rosters for ${sport.name} at Arena 2026 DTU.`,
+    description: `Fixtures, results, and department rosters for ${sport.name} at Arena 2026 DTU. Required Squad: ${sport.nos_of_players || 'Open'}.`,
   };
 }
 
@@ -74,13 +74,19 @@ export default async function SportDetailPage({ params }: SportPageProps) {
       </div>
 
       {/* Header */}
-      <div className="text-center max-w-2xl mx-auto space-y-2">
+      <div className="text-center max-w-2xl mx-auto space-y-3">
         <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
           Arena 2026 Discipline
         </span>
         <h1 className="text-4xl sm:text-6xl font-display font-black uppercase text-blue-950 tracking-tight">
           {sport.name}
         </h1>
+        {sport.nos_of_players && (
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-950 text-xs sm:text-sm font-semibold shadow-2xs">
+            <Users className="w-4 h-4 text-blue-600 shrink-0" />
+            <span>Required Squad Size: <strong className="font-bold text-blue-800">{sport.nos_of_players}</strong></span>
+          </div>
+        )}
         <p className="text-sm sm:text-base text-slate-600">
           Tournament schedule, live results, and department lineups for {sport.name}.
         </p>

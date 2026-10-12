@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSports, getMatches } from '@/lib/sheets';
-import { ArrowRight, Trophy, Calendar } from 'lucide-react';
+import { ArrowRight, Trophy, Calendar, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Tournament Sports | Arena 2026',
   description:
-    'Explore the 9 sports featured in Arena 2026: Basketball, Football, Badminton, Table Tennis, Volleyball, Chess, Kabaddi, Cricket, Hockey.',
+    'Explore the 11 sanctioned sports featured in Arena 2026: Cricket, Football, Basketball, Volleyball, Kabaddi, Lawn Tennis, Athletics, Badminton, Chess, Table Tennis, and Carom (Mixed).',
 };
 
 export default async function SportsPage() {
@@ -22,7 +22,7 @@ export default async function SportsPage() {
           Tournament Sports
         </h1>
         <p className="text-sm sm:text-base text-slate-600">
-          Nine competitive events scheduled across the DTU Sports Complex during the 3-day sports fest.
+          Eleven sanctioned events scheduled across the DTU Sports Complex during the 3-day sports fest.
         </p>
       </div>
 
@@ -48,20 +48,27 @@ export default async function SportsPage() {
                   </div>
                 </div>
 
+                {sport.nos_of_players && (
+                  <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-900 text-xs font-semibold border border-blue-100">
+                    <Users className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <span>Squad: {sport.nos_of_players}</span>
+                  </div>
+                )}
+
                 <div className="flex items-center gap-2 mt-3 text-xs font-semibold">
                   {sport.has_boys === true && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
-                      Boys Division
+                    <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                      Men
                     </span>
                   )}
                   {sport.has_girls === true && (
                     <span className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-700 border border-pink-100">
-                      Girls Division
+                      Women
                     </span>
                   )}
                   {sport.has_boys === null && sport.has_girls === null && (
                     <span className="text-slate-400 italic font-normal text-xs">
-                      Divisions to be announced
+                      Categories TBA
                     </span>
                   )}
                 </div>

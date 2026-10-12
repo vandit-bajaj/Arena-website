@@ -172,7 +172,7 @@ export default async function HomePage() {
               Tournament Sports
             </h2>
             <p className="text-sm text-slate-500 mt-1">
-              9 disciplines competing for inter-departmental glory
+              {sports.length} sanctioned disciplines competing for inter-departmental glory
             </p>
           </div>
           <Link
@@ -184,34 +184,43 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {sports.map((sport) => (
             <Link
               key={sport.sport_id}
               href={`/sports/${sport.sport_id}`}
-              className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between min-h-[120px]"
+              className="group relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between min-h-[130px]"
             >
               <div className="flex items-center justify-between">
-                <span className="font-display text-lg sm:text-xl font-bold uppercase text-slate-900 group-hover:text-blue-700 transition-colors tracking-wide">
+                <span className="font-display text-base sm:text-lg font-bold uppercase text-slate-900 group-hover:text-blue-700 transition-colors tracking-wide">
                   {sport.name}
                 </span>
                 <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all shrink-0" />
               </div>
 
-              <div className="flex items-center gap-2 mt-4 text-[11px] font-medium text-slate-500">
-                {sport.has_boys === true && (
-                  <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100">
-                    Boys
-                  </span>
+              <div className="space-y-2 mt-3">
+                {sport.nos_of_players && (
+                  <div className="text-[11px] font-semibold text-blue-900/90 bg-blue-50/70 border border-blue-100 rounded-md px-2 py-1 flex items-center gap-1.5">
+                    <Users className="w-3 h-3 text-blue-600 shrink-0" />
+                    <span className="truncate">{sport.nos_of_players}</span>
+                  </div>
                 )}
-                {sport.has_girls === true && (
-                  <span className="px-2 py-0.5 rounded-md bg-pink-50 text-pink-700 border border-pink-100">
-                    Girls
-                  </span>
-                )}
-                {sport.has_boys === null && sport.has_girls === null && (
-                  <span className="text-slate-400 italic">Categories to be announced</span>
-                )}
+
+                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500">
+                  {sport.has_boys === true && (
+                    <span className="px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                      Men
+                    </span>
+                  )}
+                  {sport.has_girls === true && (
+                    <span className="px-1.5 py-0.5 rounded-md bg-pink-50 text-pink-700 border border-pink-100">
+                      Women
+                    </span>
+                  )}
+                  {sport.has_boys === null && sport.has_girls === null && (
+                    <span className="text-slate-400 italic">Categories TBA</span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}

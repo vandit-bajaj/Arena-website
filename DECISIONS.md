@@ -32,10 +32,20 @@ This document tracks all design and implementation decisions made where the road
 * **Seed Data**: Only the exact poster facts from Section 3 of the roadmap are placed into `/data-template/Config.csv` and `/data-template/Sports.csv`.
 * **Zero Inventory**: Zero fake teams, players, coordinators, fixtures, or roll numbers. All empty entities render standard "To be announced" or "Coming soon" state cards.
 
-### 5. Sport Identifiers (sport_id)
-* **Decision**: Normalized kebab-case slugs for all 9 poster sports:
-  - `basketball`, `table-tennis`, `kabaddi`, `football`, `volleyball`, `cricket`, `badminton`, `chess`, `hockey`.
-* **Rationale**: Ensures deterministic URLs like `/sports/table-tennis` and robust foreign key referencing across `Players`, `Matches`, and `Coordinators` tabs.
+### 5. Sport Identifiers & Official Player Requirements
+* **Decision**: Normalized kebab-case slugs for all 11 official sports per DTU circular:
+  - `cricket` (Man-15, Women-8)
+  - `football` (Man-15, Women-8)
+  - `basketball` (Man-8, Women-6)
+  - `volleyball` (Man-10, Women-(6-8))
+  - `kabaddi` (Man-8, Women-6)
+  - `lawn-tennis` (Open to all)
+  - `athletics` (Open to all)
+  - `badminton` (Open to all)
+  - `chess` (Open to all)
+  - `table-tennis` (Open to all)
+  - `carom` (Open to all)
+* **Rationale**: Replaces preliminary poster list with official tournament circular. Provides squad size metadata for display across sport cards and detail pages.
 
 ### 6. Team Representation & Grouping
 * **Decision**: In `Players.csv`, players are grouped by `dept_id`, `sport_id`, and `category` (Boys/Girls). If a department has no registered players for a sport or category, that category displays "Team to be announced".

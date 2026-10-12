@@ -80,6 +80,10 @@ export const SportSchema = z.object({
     if (typeof val === 'boolean') return val;
     return null;
   }, z.boolean().nullable().default(null)),
+  nos_of_players: z.preprocess((val) => {
+    if (val === undefined || val === null) return '';
+    return String(val).trim();
+  }, z.string().default('')),
   display_order: z.preprocess((val) => {
     const num = Number(val);
     return isNaN(num) ? 99 : num;
@@ -87,6 +91,95 @@ export const SportSchema = z.object({
 });
 
 export type Sport = z.infer<typeof SportSchema>;
+
+export const OFFICIAL_GAMES_INFO: Record<
+  string,
+  {
+    name: string;
+    nos_of_players: string;
+    has_boys: boolean;
+    has_girls: boolean;
+    display_order: number;
+  }
+> = {
+  cricket: {
+    name: 'Cricket',
+    nos_of_players: 'Man-15, Women-8',
+    has_boys: true,
+    has_girls: true,
+    display_order: 1,
+  },
+  football: {
+    name: 'Football',
+    nos_of_players: 'Man-15, Women-8',
+    has_boys: true,
+    has_girls: true,
+    display_order: 2,
+  },
+  basketball: {
+    name: 'Basketball',
+    nos_of_players: 'Man-8, Women-6',
+    has_boys: true,
+    has_girls: true,
+    display_order: 3,
+  },
+  volleyball: {
+    name: 'Volleyball',
+    nos_of_players: 'Man-10, Women-(6-8)',
+    has_boys: true,
+    has_girls: true,
+    display_order: 4,
+  },
+  kabaddi: {
+    name: 'Kabaddi',
+    nos_of_players: 'Man-8, Women-6',
+    has_boys: true,
+    has_girls: true,
+    display_order: 5,
+  },
+  'lawn-tennis': {
+    name: 'Lawn Tennis',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 6,
+  },
+  athletics: {
+    name: 'Athletics',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 7,
+  },
+  badminton: {
+    name: 'Badminton',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 8,
+  },
+  chess: {
+    name: 'Chess',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 9,
+  },
+  'table-tennis': {
+    name: 'Table Tennis',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 10,
+  },
+  carom: {
+    name: 'Carom (Mixed)',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 11,
+  },
+};
 
 // ==========================================
 // 4. Players Tab Schema
