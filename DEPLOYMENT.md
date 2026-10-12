@@ -39,7 +39,8 @@ Under **Environment Variables**, add:
 ## Step 4: Deploy & Verify
 
 1. Click **Deploy**.
-2. Within ~60 seconds, your site will be live at `https://arena-2026-yourname.vercel.app`.
+2. Your site is live at:
+   👉 **https://arena-dtu-2026.vercel.app**
 3. Test your live URL:
    - Check the live countdown on Home.
    - Verify the 9 sports appear.
