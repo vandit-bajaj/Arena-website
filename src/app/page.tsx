@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllArenaData } from '@/lib/sheets';
+import { calculateDepartmentStandings } from '@/lib/points';
 import { Countdown } from '@/components/Countdown';
 import { MatchCard } from '@/components/MatchCard';
 import { EmptyState } from '@/components/EmptyState';
@@ -121,6 +122,13 @@ export default async function HomePage() {
           >
             <Users className="w-4 h-4 text-blue-600" />
             <span>Teams</span>
+          </Link>
+          <Link
+            href="/points"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-800 border border-slate-200 transition-colors min-h-[44px]"
+          >
+            <Trophy className="w-4 h-4 text-amber-500" />
+            <span>Points Table</span>
           </Link>
           <Link
             href="/gallery"
@@ -269,6 +277,105 @@ export default async function HomePage() {
               message="No match results have been posted yet. Live scores will appear here as soon as games conclude."
             />
           )}
+        </div>
+      </section>
+
+      {/* 6. Department Points Table Preview */}
+      <section className="py-12 sm:py-16 bg-white border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center">
+                <Trophy className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-display font-black text-slate-900 tracking-wide uppercase">
+                  Points Table
+                </h2>
+                <p className="text-sm text-slate-500">
+                  Overall championship team rankings, points, wins, and losses
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href="/points"
+              className="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 min-h-[44px]"
+            >
+              <span>View Full Table</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-display uppercase tracking-wider text-[11px]">
+                    <th className="py-3 px-4 text-center w-14">Rank</th>
+                    <th className="py-3 px-4 font-bold">Department</th>
+                    <th className="py-3 px-3 text-center">Played</th>
+                    <th className="py-3 px-3 text-center text-emerald-700 font-bold">Won</th>
+                    <th className="py-3 px-3 text-center text-rose-700 font-bold">Lost</th>
+                    <th className="py-3 px-3 text-center text-slate-600">Draw</th>
+                    <th className="py-3 px-4 text-center text-blue-900 font-black text-sm sm:text-base bg-blue-50/50">
+                      Points
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {calculateDepartmentStandings(departments, matches)
+                    .slice(0, 5)
+                    .map((item) => (
+                      <tr key={item.dept_id} className="hover:bg-blue-50/30 transition-colors">
+                        <td className="py-3 px-4 text-center font-display font-black text-sm">
+                          {item.rank === 1 && item.points > 0 ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-slate-950 text-xs font-bold">
+                              1
+                            </span>
+                          ) : (
+                            <span className="text-slate-500 font-semibold">{item.rank}</span>
+                          )}
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="font-semibold text-slate-900">
+                            {item.name}
+                          </div>
+                          <span className="text-[11px] font-mono text-slate-400">
+                            {item.dept_id}
+                          </span>
+                        </td>
+                        <td className="py-3 px-3 text-center text-slate-600 font-medium">
+                          {item.played}
+                        </td>
+                        <td className="py-3 px-3 text-center text-emerald-600 font-bold">
+                          {item.won}
+                        </td>
+                        <td className="py-3 px-3 text-center text-rose-600 font-medium">
+                          {item.lost}
+                        </td>
+                        <td className="py-3 px-3 text-center text-slate-500">
+                          {item.drawn}
+                        </td>
+                        <td className="py-3 px-4 text-center font-display font-black text-blue-900 text-base sm:text-lg bg-blue-50/40">
+                          {item.points}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3.5 bg-slate-50 border-t border-slate-100 text-center text-xs text-slate-500">
+              <Link
+                href="/points"
+                className="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center gap-1"
+              >
+                <span>Explore complete rankings across all 15 departments and 11 sports</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

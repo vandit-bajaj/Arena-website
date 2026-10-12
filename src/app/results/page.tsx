@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { getMatches, getSports, getDepartments } from '@/lib/sheets';
 import { ResultsView } from './ResultsView';
+import { Trophy } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Match Results & Scores | Arena 2026',
@@ -17,13 +19,22 @@ export default async function ResultsPage() {
 
   return (
     <div className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      <div className="mb-8 text-center max-w-2xl mx-auto space-y-2">
+      <div className="mb-8 text-center max-w-2xl mx-auto space-y-3">
         <h1 className="text-3xl sm:text-5xl font-display font-black uppercase text-blue-950 tracking-tight">
           Match Results
         </h1>
         <p className="text-sm sm:text-base text-slate-600">
           Official scores and match winners updated continuously directly from the arena coordinators.
         </p>
+        <div className="pt-1">
+          <Link
+            href="/points"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs sm:text-sm font-bold shadow-xs transition-all"
+          >
+            <Trophy className="w-4 h-4" />
+            <span>View Department Points Table & Standings</span>
+          </Link>
+        </div>
       </div>
 
       <ResultsView

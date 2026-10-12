@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/teams', label: 'Teams' },
   { href: '/schedule', label: 'Schedule' },
   { href: '/results', label: 'Results' },
+  { href: '/points', label: 'Points Table' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contacts', label: 'Contacts' },
   { href: '/doubts', label: 'Doubts' },

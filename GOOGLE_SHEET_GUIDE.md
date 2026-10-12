@@ -167,9 +167,14 @@ Controls both the **Schedule page** and the **Live Results page**.
   - `No result` = Abandoned / Rain
 - `result_note`: Extra context (e.g., `Won by 3 wickets`, `Won 21-18, 21-16`, `Penalties 4-2`).
 
-### ⚙️ How Match Status Works
+### ⚙️ How Match Status & Points Table Work
 - **Upcoming Fixture (Shown on `/schedule`)**: Leave `winner` **blank**.
 - **Completed Match (Moved to `/results`)**: Enter `score_a`, `score_b`, and select `winner` (`A`, `B`, `Draw`, or `No result`). Within 60 seconds, the website automatically moves the game from Schedule to Results and highlights the winning department!
+- **Automatic Points Table ([`/points`](https://arena-2026-dtu.vercel.app/points))**:
+  - **Win**: +2 points (and +1 win for the victorious department)
+  - **Draw / Tie**: +1 point each
+  - **Loss**: 0 points (+1 loss)
+  - The live points table automatically ranks all 15 departments for the **Overall Championship Trophy** as well as individual **Discipline-specific Standings** (e.g., Football Points Table, Cricket Points Table)!
 
 ### Example Rows
 | match_id | date | time | venue_ground | sport_id | category | round | team_a | team_b | score_a | score_b | winner | result_note |
