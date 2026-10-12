@@ -158,21 +158,27 @@ export function PointsTableView({
 
       {/* 3. The Standings Table */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Mobile Swipe Hint */}
+        <div className="sm:hidden px-4 py-2 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+          <span>Department Rankings</span>
+          <span className="text-blue-600 font-semibold">Scroll horizontally for stats ➔</span>
+        </div>
+
+        <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200 text-slate-600 font-display uppercase tracking-wider text-[11px] sm:text-xs">
-                <th className="py-3.5 px-3 sm:px-4 text-center w-12 sm:w-16">Rank</th>
-                <th className="py-3.5 px-4 font-bold">Department</th>
-                <th className="py-3.5 px-3 text-center">Played</th>
-                <th className="py-3.5 px-3 text-center text-emerald-700 font-bold">Won</th>
-                <th className="py-3.5 px-3 text-center text-rose-700 font-bold">Lost</th>
-                <th className="py-3.5 px-3 text-center text-slate-600 font-bold">Draw</th>
-                <th className="py-3.5 px-4 text-center text-blue-950 font-black text-sm sm:text-base bg-blue-50/50">
+                <th className="py-3.5 px-3 sm:px-4 text-center w-12 sm:w-16 whitespace-nowrap">Rank</th>
+                <th className="py-3.5 px-4 font-bold min-w-[140px] sm:min-w-[200px]">Department</th>
+                <th className="py-3.5 px-3 text-center whitespace-nowrap">Played</th>
+                <th className="py-3.5 px-3 text-center text-emerald-700 font-bold whitespace-nowrap">Won</th>
+                <th className="py-3.5 px-3 text-center text-rose-700 font-bold whitespace-nowrap">Lost</th>
+                <th className="py-3.5 px-3 text-center text-slate-600 font-bold whitespace-nowrap">Draw</th>
+                <th className="py-3.5 px-4 text-center text-blue-950 font-black text-sm sm:text-base bg-blue-50/50 whitespace-nowrap">
                   Points
                 </th>
-                <th className="py-3.5 px-3 text-center hidden md:table-cell">Win %</th>
-                <th className="py-3.5 px-4 text-center hidden lg:table-cell">Recent Form</th>
+                <th className="py-3.5 px-3 text-center hidden md:table-cell whitespace-nowrap">Win %</th>
+                <th className="py-3.5 px-4 text-center hidden lg:table-cell whitespace-nowrap">Recent Form</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">

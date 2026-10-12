@@ -308,17 +308,17 @@ export default async function HomePage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto scrollbar-thin">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-display uppercase tracking-wider text-[11px]">
-                    <th className="py-3 px-4 text-center w-14">Rank</th>
-                    <th className="py-3 px-4 font-bold">Department</th>
-                    <th className="py-3 px-3 text-center">Played</th>
-                    <th className="py-3 px-3 text-center text-emerald-700 font-bold">Won</th>
-                    <th className="py-3 px-3 text-center text-rose-700 font-bold">Lost</th>
-                    <th className="py-3 px-3 text-center text-slate-600">Draw</th>
-                    <th className="py-3 px-4 text-center text-blue-900 font-black text-sm sm:text-base bg-blue-50/50">
+                    <th className="py-3 px-4 text-center w-14 whitespace-nowrap">Rank</th>
+                    <th className="py-3 px-4 font-bold min-w-[140px]">Department</th>
+                    <th className="py-3 px-3 text-center whitespace-nowrap">Played</th>
+                    <th className="py-3 px-3 text-center text-emerald-700 font-bold whitespace-nowrap">Won</th>
+                    <th className="py-3 px-3 text-center text-rose-700 font-bold whitespace-nowrap">Lost</th>
+                    <th className="py-3 px-3 text-center text-slate-600 whitespace-nowrap">Draw</th>
+                    <th className="py-3 px-4 text-center text-blue-900 font-black text-sm sm:text-base bg-blue-50/50 whitespace-nowrap">
                       Points
                     </th>
                   </tr>

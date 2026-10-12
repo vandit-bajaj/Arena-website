@@ -253,7 +253,7 @@ export function Navbar({ siteName = 'Arena 2026' }: NavbarProps) {
 
       {/* Mobile Drawer (Collapses to Hamburger Menu) */}
       {isOpen && (
-        <div className="lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top duration-150">
+        <div className="lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top duration-150 max-h-[calc(100vh-4.5rem)] overflow-y-auto scrollbar-thin">
           <div className="space-y-1">
             {primaryLinks.map((link) => {
               const isActive = pathname === link.href;

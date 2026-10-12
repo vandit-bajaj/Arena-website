@@ -82,15 +82,15 @@ export function SportDetailView({
     <div className="space-y-8">
       {/* Category Tabs (Only if multiple exist) */}
       {availableCategories.length > 1 && (
-        <div className="flex items-center justify-center">
-          <div className="inline-flex p-1 rounded-xl bg-white border border-slate-200 shadow-2xs">
+        <div className="flex items-center justify-center px-1">
+          <div className="inline-flex p-1 rounded-xl bg-white border border-slate-200 shadow-2xs max-w-full overflow-x-auto scrollbar-thin">
             {availableCategories.map((cat) => {
               const isSelected = activeCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-6 py-2.5 rounded-lg font-display text-sm sm:text-base font-bold uppercase tracking-wider transition-all min-h-[44px] ${
+                  className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-display text-xs sm:text-base font-bold uppercase tracking-wider whitespace-nowrap transition-all min-h-[44px] shrink-0 cursor-pointer ${
                     isSelected
                       ? 'bg-blue-900 text-white shadow-2xs'
                       : 'text-slate-600 hover:text-blue-900 hover:bg-slate-50'
@@ -105,42 +105,42 @@ export function SportDetailView({
       )}
 
       {/* Sub-view Navigation (Fixtures / Results / Teams) */}
-      <div className="flex items-center justify-center border-b border-slate-200">
-        <nav className="flex space-x-6">
+      <div className="flex items-center justify-start sm:justify-center border-b border-slate-200 overflow-x-auto scrollbar-thin">
+        <nav className="flex space-x-2 sm:space-x-6 min-w-max px-2">
           <button
             onClick={() => setActiveTab('fixtures')}
-            className={`flex items-center gap-2 pb-3 px-2 text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] ${
+            className={`flex items-center gap-1.5 sm:gap-2 pb-3 px-2 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] whitespace-nowrap cursor-pointer ${
               activeTab === 'fixtures'
                 ? 'border-blue-600 text-blue-900'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-4 h-4 shrink-0" />
             <span>Fixtures ({scheduledMatches.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('results')}
-            className={`flex items-center gap-2 pb-3 px-2 text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] ${
+            className={`flex items-center gap-1.5 sm:gap-2 pb-3 px-2 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] whitespace-nowrap cursor-pointer ${
               activeTab === 'results'
                 ? 'border-blue-600 text-blue-900'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            <Trophy className="w-4 h-4" />
+            <Trophy className="w-4 h-4 shrink-0" />
             <span>Results ({completedMatches.length})</span>
           </button>
 
           <button
             onClick={() => setActiveTab('teams')}
-            className={`flex items-center gap-2 pb-3 px-2 text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] ${
+            className={`flex items-center gap-1.5 sm:gap-2 pb-3 px-2 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-all min-h-[44px] whitespace-nowrap cursor-pointer ${
               activeTab === 'teams'
                 ? 'border-blue-600 text-blue-900'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            <Users className="w-4 h-4" />
-            <span>Participating Teams ({participatingDepts.length})</span>
+            <Users className="w-4 h-4 shrink-0" />
+            <span>Teams ({participatingDepts.length})</span>
           </button>
         </nav>
       </div>

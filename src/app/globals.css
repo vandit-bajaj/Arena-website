@@ -19,11 +19,39 @@
   --foreground: #0F172A;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Touch & horizontal scroll smoothing */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
 }
 
 /* Glassmorphism utility */
@@ -40,3 +68,4 @@ body {
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
+

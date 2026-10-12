@@ -84,6 +84,14 @@ export function Footer({ config }: FooterProps) {
               </li>
               <li>
                 <Link
+                  href="/points"
+                  className="hover:text-amber-400 text-amber-200/90 font-semibold transition-colors py-1 inline-block"
+                >
+                  Points Table
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/teams"
                   className="hover:text-blue-400 transition-colors py-1 inline-block"
                 >
@@ -112,6 +120,14 @@ export function Footer({ config }: FooterProps) {
                   className="hover:text-blue-400 transition-colors py-1 inline-block"
                 >
                   Coordinators
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/doubts"
+                  className="hover:text-blue-400 transition-colors py-1 inline-block"
+                >
+                  Doubts & Inquiries
                 </Link>
               </li>
               <li>

@@ -78,21 +78,21 @@ export function ScheduleView({ matches, sports, departments }: ScheduleViewProps
   return (
     <div className="space-y-8">
       {/* Day Selector Tabs */}
-      <div className="flex items-center justify-center">
-        <div className="inline-flex p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+      <div className="flex items-center justify-center px-1">
+        <div className="inline-flex p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xs max-w-full overflow-x-auto scrollbar-thin">
           {FEST_DAYS.map((day) => {
             const isSelected = selectedDay === day.id;
             return (
               <button
                 key={day.id}
                 onClick={() => setSelectedDay(day.id)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-xl font-display text-sm sm:text-base font-bold uppercase tracking-wider transition-all min-h-[44px] ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl font-display text-xs sm:text-base font-bold uppercase tracking-wider whitespace-nowrap transition-all min-h-[44px] shrink-0 cursor-pointer ${
                   isSelected
                     ? 'bg-blue-900 text-white shadow-sm'
                     : 'text-slate-600 hover:text-blue-900 hover:bg-slate-50'
                 }`}
               >
-                <Calendar className="w-4 h-4 shrink-0" />
+                <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                 <span>{day.label}</span>
               </button>
             );
