@@ -3,6 +3,8 @@
 This document is the official operational guide for the DTU Sports Council and organizers of **Arena 2026**. 
 All website content is driven dynamically by your single Google Spreadsheet.
 
+> 📖 **Comprehensive Spreadsheet Manual**: For detailed column-by-column schemas, 11 sports IDs, and validation formulas, refer to [**GOOGLE_SHEET_GUIDE.md**](./GOOGLE_SHEET_GUIDE.md).
+
 ---
 
 ## 1. Quick Setup & Spreadsheet Connection

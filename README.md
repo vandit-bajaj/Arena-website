@@ -52,5 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Google Sheets Template & Dropdowns
-See [`/data-template/README.md`](./data-template/README.md) for full instructions on setting up tabs, plain text formatting, and data validation rules in Google Sheets.
+## Google Sheets Setup & Operator Guides
+- 📖 [**Complete Google Sheet Operations Guide (GOOGLE_SHEET_GUIDE.md)**](./GOOGLE_SHEET_GUIDE.md) — Step-by-step breakdown of every tab, column schemas, and validation formulas.
+- 📋 [**Owner's Operational Guide (OWNER_GUIDE.md)**](./OWNER_GUIDE.md) — Day-to-day workflow instructions for fest organizers.
+- 📁 Offline Master Excel file: [`/data-template/Arena_2026_Data.xlsx`](./Arena_2026_Data.xlsx) (and in your Downloads folder).
