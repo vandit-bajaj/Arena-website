@@ -16,14 +16,25 @@ export default async function AboutPage() {
     <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full space-y-12">
       {/* Title */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="w-16 h-16 rounded-full bg-white border border-slate-200 p-2 mx-auto flex items-center justify-center shadow-xs">
-          <Image
-            src="/dtu-logo.png"
-            alt="DTU Seal"
-            width={48}
-            height={48}
-            className="object-contain"
-          />
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-16 h-16 rounded-full bg-white border border-slate-200 p-2 flex items-center justify-center shadow-xs">
+            <Image
+              src="/dtu-logo.png"
+              alt="DTU Seal"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
+          </div>
+          <div className="w-16 h-16 rounded-full bg-slate-900 border border-slate-200 p-2 flex items-center justify-center shadow-xs">
+            <Image
+              src="/sports-council-logo.png"
+              alt="Sports Council DTU Shield"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
+          </div>
         </div>
         <h1 className="text-4xl sm:text-6xl font-display font-black uppercase text-blue-950 tracking-tight">
           About {config.site_name}

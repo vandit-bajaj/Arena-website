@@ -16,14 +16,25 @@ export function Footer({ config }: FooterProps) {
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shrink-0">
-                <Image
-                  src="/dtu-logo.png"
-                  alt="DTU Crest"
-                  width={36}
-                  height={36}
-                  className="object-contain"
-                />
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shrink-0">
+                  <Image
+                    src="/dtu-logo.png"
+                    alt="DTU Crest"
+                    width={36}
+                    height={36}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 p-1 flex items-center justify-center shrink-0">
+                  <Image
+                    src="/sports-council-logo.png"
+                    alt="Sports Council DTU Shield"
+                    width={36}
+                    height={36}
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <div>
                 <h3 className="font-display text-2xl font-black text-white tracking-wider uppercase">

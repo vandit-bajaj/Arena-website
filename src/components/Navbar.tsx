@@ -35,15 +35,27 @@ export function Navbar({ siteName = 'Arena 2026' }: NavbarProps) {
             href="/"
             className="flex items-center gap-3 group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg p-1"
           >
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full bg-slate-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-2xs">
-              <Image
-                src="/dtu-logo.png"
-                alt="Delhi Technological University Seal"
-                width={44}
-                height={44}
-                className="object-contain p-0.5"
-                priority
-              />
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-slate-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-2xs">
+                <Image
+                  src="/dtu-logo.png"
+                  alt="Delhi Technological University Seal"
+                  width={40}
+                  height={40}
+                  className="object-contain p-0.5"
+                  priority
+                />
+              </div>
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-slate-900 border border-slate-200 overflow-hidden flex items-center justify-center shadow-2xs">
+                <Image
+                  src="/sports-council-logo.png"
+                  alt="Sports Council DTU Shield"
+                  width={40}
+                  height={40}
+                  className="object-contain p-0.5"
+                  priority
+                />
+              </div>
             </div>
             <div className="flex flex-col">
               <span className="font-display text-xl sm:text-2xl font-black tracking-wider text-blue-950 uppercase leading-none group-hover:text-blue-700 transition-colors">
