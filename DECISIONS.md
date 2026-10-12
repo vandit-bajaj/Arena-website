@@ -47,8 +47,16 @@ This document tracks all design and implementation decisions made where the road
 
 ### 8. External Links & Brand Assets
 * **Decision**:
-  - Logo: Provided by user and saved to `/public/dtu-logo.png`. Rendered in the header alongside "DTU Sports Complex" / "Department of Physical Education & Sports".
+  - Logos: DTU Crest and Sports Council DTU Shield rendered side-by-side in header, footer, and about page.
   - Instagram: `https://www.instagram.com/sc_dtu` configured as the official DTU Sports Council handle.
   - Doubts Form: `https://forms.gle/eJR4xUL5RV4ratG57` configured.
-  - Gallery: Awaiting user's Google Drive link for the 8 photos. In the interim, renders "Photos from past editions coming soon".
+  - Gallery: Configured to support Google Drive link or direct entries in `Gallery` tab.
+
+### 9. Site-wide Announcement Ribbon
+* **Decision**: Implemented `<AnnouncementRibbon>` in root `layout.tsx` rendered globally at the top of every page.
+* **Data Sources (Multi-tier resolution)**:
+  1. Priority 1: `announcement_ribbon_text` (or `announcement` / `ribbon_text`) row in the `Config` tab. Setting this to `off` or `none` disables the ribbon.
+  2. Priority 2: Latest row in the `Announcements` tab (`text` and `date_time`).
+  3. Default: If both are empty or ribbon is disabled, the component cleanly unmounts without rendering any empty whitespace or placeholder box.
+* **UX & Interaction**: Features an amber alert badge, high-contrast readable text with responsive line-clamping on mobile, and an accessible dismiss button (`X`) with local state.
 

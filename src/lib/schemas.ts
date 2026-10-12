@@ -23,6 +23,7 @@ export interface SiteConfig {
   gallery_drive_url: string;
   contact_email: string;
   footer_note: string;
+  announcement_ribbon_text: string;
   [key: string]: string;
 }
 
@@ -39,6 +40,7 @@ export const DEFAULT_CONFIG: SiteConfig = {
   gallery_drive_url: '',
   contact_email: '',
   footer_note: 'Delhi Technological University',
+  announcement_ribbon_text: '',
 };
 
 // ==========================================

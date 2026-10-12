@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllArenaData } from '@/lib/sheets';
 import { Countdown } from '@/components/Countdown';
-import { AnnouncementBanner } from '@/components/AnnouncementBanner';
 import { MatchCard } from '@/components/MatchCard';
 import { EmptyState } from '@/components/EmptyState';
 import { InstagramIcon } from '@/components/InstagramIcon';
@@ -29,10 +28,7 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Announcements Banner */}
-      <AnnouncementBanner announcements={announcements} />
-
-      {/* 2. Hero Section */}
+      {/* 1. Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-blue-900 via-blue-800 to-slate-900 text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-blue-950">
         {/* Background decorative subtle blur */}
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />

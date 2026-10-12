@@ -65,9 +65,23 @@ When a match finishes at the venue:
 
 ---
 
-### D. Updating Links & Announcements
-- **Instagram / Doubts Form Link**: In the **`Config`** tab, update the value for `instagram_url` or `doubts_form_url`.
-- **Breaking News / Live Announcements**: Add a row to the **`Announcements`** tab with `text` (e.g., *"Rain delay on Football Ground 2. Matches resume at 2:00 PM"*). The banner appears prominently at the top of the Home page.
+### D. Announcement Ribbon (Top of All Pages)
+You have two easy ways to show an announcement in the top ribbon bar across the entire website:
+
+**Option 1: Quick Sticky Announcement (`Config` Tab - Recommended)**
+1. Go to the **`Config`** tab.
+2. In Column A, find (or add) **`announcement_ribbon_text`**.
+3. In Column B, type your announcement message (e.g., `⚡ Badminton semi-finals shifted to Indoor Hall at 2:00 PM!`).
+4. To hide the ribbon bar, simply clear Column B or set it to `off`.
+
+**Option 2: Timestamped Announcements Log (`Announcements` Tab)**
+1. Go to the **`Announcements`** tab.
+2. Add a new row:
+   - `date_time`: e.g., `16 Oct, 11:30 AM` (optional)
+   - `text`: Your announcement message
+3. The latest row automatically appears in the top ribbon bar with its timestamp.
+
+- **Updating Links**: In the **`Config`** tab, you can update `instagram_url`, `doubts_form_url`, or `gallery_drive_url`.
 
 ---
 
