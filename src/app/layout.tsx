@@ -30,6 +30,15 @@ export async function generateMetadata(): Promise<Metadata> {
       description: `${config.tagline}. ${config.event_dates_text} at ${config.venue}.`,
       type: 'website',
     },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '48x48' },
+        { url: '/sports-council-logo.png', sizes: '375x375', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/sports-council-logo.png', sizes: '375x375', type: 'image/png' },
+      ],
+    },
   };
 }
 
