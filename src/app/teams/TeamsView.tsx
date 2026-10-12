@@ -202,10 +202,17 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                       className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden"
                     >
                       {/* Sport Header */}
-                      <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                        <h3 className="font-display text-lg sm:text-xl font-bold uppercase text-blue-950 tracking-wide">
-                          {sport.name}
-                        </h3>
+                      <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex items-center gap-2.5">
+                          <h3 className="font-display text-lg sm:text-xl font-bold uppercase text-blue-950 tracking-wide">
+                            {sport.name}
+                          </h3>
+                          {sport.nos_of_players && (
+                            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 border border-blue-200">
+                              {sport.nos_of_players}
+                            </span>
+                          )}
+                        </div>
                         <span className="text-xs text-slate-500 font-medium">
                           {boysTeam.length + girlsTeam.length + otherTeam.length} Players
                         </span>
