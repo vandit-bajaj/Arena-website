@@ -1,0 +1,10 @@
+sport_id,name,has_boys,has_girls,display_order
+basketball,Basketball,,,1
+table-tennis,Table Tennis,,,2
+kabaddi,Kabaddi,,,3
+football,Football,,,4
+volleyball,Volleyball,,,5
+cricket,Cricket,,,6
+badminton,Badminton,,,7
+chess,Chess,,,8
+hockey,Hockey,,,9

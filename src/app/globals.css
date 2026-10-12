@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-arena-navy: #0B1930;
+  --color-arena-royal: #1E40AF;
+  --color-arena-blue: #2563EB;
+  --color-arena-sky: #0284C7;
+  --color-arena-cyan: #38BDF8;
+  --color-arena-light-blue: #E0F2FE;
+  --color-arena-cream: #FFFBEB;
+  --color-arena-gold: #F59E0B;
+
+  --font-display: var(--font-display), "Oswald", "Arial Black", sans-serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-banner {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}

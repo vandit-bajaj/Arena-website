@@ -1,0 +1,6 @@
+check_type,rule_description,google_sheets_formula,status_note
+Invalid Dept in Players,"Flag player dept_id missing in Departments","=IF(A2="""","""",IF(ISNA(MATCH(A2, Departments!A:A, 0)), ""ERROR: Unknown Department"", ""OK""))","Put in column F of Players"
+Invalid Sport in Players,"Flag player sport_id missing in Sports","=IF(B2="""","""",IF(ISNA(MATCH(B2, Sports!A:A, 0)), ""ERROR: Unknown Sport"", ""OK""))","Put in column G of Players"
+Duplicate Roll No,"Flag duplicate roll number within same sport & category","=IF(E2="""","""",IF(COUNTIFS(B:B, B2, C:C, C2, E:E, E2)>1, ""ERROR: Duplicate Roll No"", ""OK""))","Put in column H of Players"
+Same Team Match,"Flag match where Team A equals Team B","=IF(OR(H2="""",I2=""""),"""",IF(H2=I2,""ERROR: Team A cannot play Team A"",""OK""))","Put in column N of Matches"
+Winner Without Score,"Flag completed match without score","=IF(L2="""","""",IF(AND(OR(L2=""A"",L2=""B""),OR(J2="""",K2="""")),""ERROR: Score required when winner declared"",""OK""))","Put in column O of Matches"
