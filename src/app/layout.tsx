@@ -1,6 +1,10 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Oswald, Inter } from 'next/font/google';
 import './globals.css';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { getSiteConfig } from '@/lib/sheets';
 
 const oswald = Oswald({
   variable: '--font-display',
@@ -15,26 +19,34 @@ const inter = Inter({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'Arena 2026 | DTU Annual Inter Departmental Sports Tournament',
-  description:
-    'Official website for Arena 2026, the Annual Inter Departmental Sports Tournament organized by the DTU Department of Physical Education & Sports. 16, 17 & 18 October 2026 at DTU Sports Complex.',
-  openGraph: {
-    title: 'Arena 2026 - DTU Sports Fest',
-    description: 'Hustle, Hit, Never Quit. 16, 17 & 18 October 2026 at DTU Sports Complex.',
-    type: 'website',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getSiteConfig();
+  return {
+    title: `${config.site_name} | ${config.subtitle}`,
+    description: `Official portal for ${config.site_name}, organized by ${config.organiser}. Dates: ${config.event_dates_text} at ${config.venue}. Tagline: ${config.tagline}.`,
+    openGraph: {
+      title: `${config.site_name} - DTU Sports Fest`,
+      description: `${config.tagline}. ${config.event_dates_text} at ${config.venue}.`,
+      type: 'website',
+    },
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const config = await getSiteConfig();
+
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
-        {children}
+        <Suspense fallback={<div className="h-16 sm:h-18 bg-white border-b border-slate-200" />}>
+          <Navbar siteName={config.site_name} />
+        </Suspense>
+        <main className="flex-1">{children}</main>
+        <Footer config={config} />
       </body>
     </html>
   );

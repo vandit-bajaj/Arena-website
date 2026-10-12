@@ -45,8 +45,10 @@ This document tracks all design and implementation decisions made where the road
 * **Decision**: A match is derived as `Completed` if `winner` is non-empty (`A`, `B`, `Draw`, or `No result`). If `winner` is empty, it is `Scheduled`.
 * **Scores**: Free-text string preserved as entered in the sheet (e.g., `"21-18, 19-21, 21-15"`, `"145/6 vs 132/9"`) without destructive regex parsing.
 
-### 8. External Links & Missing Assets
+### 8. External Links & Brand Assets
 * **Decision**:
-  - Logo: Since no logo image file is provided yet, render a clean typographic banner: `"DTU | Department of Physical Education & Sports"`.
-  - Instagram & Doubts Form: If empty in `Config`, render buttons with "Coming soon" disabled state.
-  - Gallery: If no photos exist in `Gallery.csv` or `/public/gallery/`, display "Photos from past editions coming soon".
+  - Logo: Provided by user and saved to `/public/dtu-logo.png`. Rendered in the header alongside "DTU Sports Complex" / "Department of Physical Education & Sports".
+  - Instagram: `https://www.instagram.com/sc_dtu` configured as the official DTU Sports Council handle.
+  - Doubts Form: `https://forms.gle/eJR4xUL5RV4ratG57` configured.
+  - Gallery: Awaiting user's Google Drive link for the 8 photos. In the interim, renders "Photos from past editions coming soon".
+
