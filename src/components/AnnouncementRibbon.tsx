@@ -18,7 +18,7 @@ export function AnnouncementRibbon({ text, dateTime }: AnnouncementRibbonProps) 
   return (
     <aside
       aria-label="Important Announcement"
-      className="relative z-50 bg-gradient-to-r from-blue-950 via-indigo-900 to-blue-950 text-white border-b border-blue-700/60 shadow-sm"
+      className="relative z-40 bg-gradient-to-r from-blue-950 via-indigo-900 to-blue-950 text-white border-b border-blue-700/60 shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between gap-3">
         {/* Main Ribbon Content */}

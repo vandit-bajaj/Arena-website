@@ -72,10 +72,10 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
-        <AnnouncementRibbon text={ribbonText} dateTime={ribbonDate} />
         <Suspense fallback={<div className="h-16 sm:h-18 bg-white border-b border-slate-200" />}>
           <Navbar siteName={config.site_name} />
         </Suspense>
+        <AnnouncementRibbon text={ribbonText} dateTime={ribbonDate} />
         <main className="flex-1">{children}</main>
         <Footer config={config} />
       </body>
