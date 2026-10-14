@@ -194,20 +194,23 @@ export const SPORT_RULES: SportRule[] = [
   {
     sport_id: 'badminton',
     name: 'Badminton',
-    governingBody: 'BWF / BAI',
+    governingBody: 'BWF / Physical Education Dept DTU',
     format: {
       rounds: [
-        { stage: 'Knockout Matches (Singles & Doubles)', detail: '1 Game of 11 points' },
-        { stage: 'Quarterfinals & Semifinals', detail: '1 Game of 21 points' },
-        { stage: 'Finals (Men)', detail: 'Best of 3 Games (21 points each)' },
-        { stage: 'Finals (Women)', detail: 'Best of 3 Games (11 points each)' },
+        { stage: 'Earlier Rounds (Through Round of 16)', detail: '1 Game to 21 points (Golden point at 29–29: 30th point wins)' },
+        { stage: 'Quarterfinals, Semifinals & Finals', detail: 'Best of 3 Games (15 points each, Golden point at 20–20: 21st point wins)' },
       ],
+      general: 'Venue: Indoor Badminton Hall | Events: Men’s Singles, Women’s Singles, Men’s Doubles, Women’s Doubles. Each participant may enter max 1 singles & 1 doubles event (both doubles partners must be from same department).',
     },
     rules: [
-      'Standard Badminton World Federation (BWF) rules apply.',
-      'A point is scored when the shuttlecock lands within the opponent’s court boundary. Shuttle hitting the net and failing to cross is a fault.',
-      'Service: Must be delivered underarm, below the waist, and directed diagonally across. No second serves are permitted.',
-      'Touching the net with racket, clothes, or body, deliberate distraction, or delay results in loss of point or forfeiture.',
+      'Matches follow BWF Laws of Badminton under the DTU Department of Physical Education.',
+      'Rally point scoring applies in every round (a point is awarded after each rally). Must win by 2 clear points.',
+      'Intervals: Up to 60 seconds at 11 points (earlier rounds) or at 8 points (quarterfinals onward). Up to 2 minutes rest between games.',
+      'End switching: Players change ends after each game, and in a deciding third game, when the leading player/pair reaches 8 points.',
+      'Warm-up & Toss: Toss winner selects serve, receive, or end. Warm-up is strictly limited to 2 minutes.',
+      'Mandatory Footwear: Non-marking sports shoes are strictly mandatory inside the Indoor Badminton Hall.',
+      'Service: Must be hit underarm below the waist diagonally across the net. No second serves are permitted.',
+      '15-Minute Rule: Players not ready within 15 minutes of being called will forfeit the match. Brief medical break permitted for illness/injury.',
     ],
   },
   {
