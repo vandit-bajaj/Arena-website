@@ -37,7 +37,7 @@ const moreLinks = [
   {
     href: '/contacts',
     label: 'Contacts',
-    description: 'Coordinators & council',
+    description: 'Coordinators & volunteers',
     icon: Users,
   },
   {

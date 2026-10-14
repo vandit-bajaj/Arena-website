@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getGallery, getSiteConfig } from '@/lib/sheets';
+import { getGallery, getSiteConfig, getDetectedGalleryDriveUrl } from '@/lib/sheets';
 import { GalleryView } from './GalleryView';
 
 export const metadata: Metadata = {
@@ -14,6 +14,8 @@ export default async function GalleryPage() {
     getSiteConfig(),
   ]);
 
+  const effectiveDriveUrl = config.gallery_drive_url || getDetectedGalleryDriveUrl();
+
   return (
     <div className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <div className="mb-10 text-center max-w-2xl mx-auto space-y-2">
@@ -27,7 +29,7 @@ export default async function GalleryPage() {
 
       <GalleryView
         galleryItems={galleryItems}
-        driveUrl={config.gallery_drive_url}
+        driveUrl={effectiveDriveUrl}
       />
     </div>
   );

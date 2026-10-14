@@ -13,11 +13,12 @@
 4. [Tab 3: Sports (The 11 Official Disciplines)](#4-tab-3-sports-the-11-official-disciplines)
 5. [Tab 4: Players (Department Rosters)](#5-tab-4-players-department-rosters)
 6. [Tab 5: Matches (Fixtures & Live Results)](#6-tab-5-matches-fixtures--live-results)
-7. [Tab 6: Coordinators (Contact Directory)](#7-tab-6-coordinators-contact-directory)
-8. [Tab 7: Gallery (Photo Highlights)](#8-tab-7-gallery-photo-highlights)
-9. [Tab 8: Announcements (Timestamped Log)](#9-tab-8-announcements-timestamped-log)
-10. [Tab 9: Check (Automatic Validation Formulas)](#10-tab-9-check-automatic-validation-formulas)
-11. [Troubleshooting & Common Mistakes](#11-troubleshooting--common-mistakes)
+7. [Tab 6: Coordinators (Faculty & Sport Heads)](#7-tab-6-coordinators-faculty--sport-heads)
+8. [Tab 7: Volunteers (Student Organizing Committees)](#8-tab-7-volunteers-student-organizing-committees)
+9. [Tab 8: Gallery (Photo Highlights)](#9-tab-8-gallery-photo-highlights)
+10. [Tab 9: Announcements (Timestamped Log)](#10-tab-9-announcements-timestamped-log)
+11. [Tab 10: Check (Automatic Validation Formulas)](#11-tab-10-check-automatic-validation-formulas)
+12. [Troubleshooting & Common Mistakes](#12-troubleshooting--common-mistakes)
 
 ---
 
@@ -184,13 +185,13 @@ Controls both the **Schedule page** and the **Live Results page**.
 
 ---
 
-## 7. Tab 6: `Coordinators` (Contact Directory)
+## 7. Tab 6: `Coordinators` (Faculty & Sport Heads)
 
-Displayed on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
+Displayed under the **Coordinators segment** on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
 
 ### Columns
 - `name` *(required)*: Full name of faculty, student coordinator, or convenor.
-- `role`: Role title (e.g., `Sports Secretary`, `Faculty Advisor`, `Football Coordinator`).
+- `role`: Role title (e.g., `Sports Secretary`, `Faculty Advisor`, `Cricket Coordinator`).
 - `sport_id`: Associated sport slug (or blank for General Council).
 - `phone`: Mobile number. *(Format column as Plain Text!)*
 - `email`: Contact email address.
@@ -204,7 +205,32 @@ Displayed on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
 
 ---
 
-## 8. Tab 7: `Gallery` (Photo Highlights)
+## 8. Tab 7: `Volunteers` (Student Organizing Committees)
+
+Displayed under the **Volunteers segment** on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
+
+### Columns
+- `name` *(required)*: Full name of student volunteer.
+- `role`: Committee or responsibility (e.g., `Core committee`, `Ceremonies Committee`, `Hospitality & Reception`, `Media, IT`, `Logistic & venue`, `Discipline`, `Technical`).
+- `sport_id`: Associated sport slug (or blank if general organizing committee).
+- `phone`: Mobile number. *(Format column as Plain Text!)*
+- `email`: Contact email address (optional).
+
+### Example Rows
+| name | role | sport_id | phone | email |
+| :--- | :--- | :--- | :--- | :--- |
+| Samarth | Core committee | `cricket` | `7678633625` | |
+| Harsh | Ceremonies Committee | `cricket` | `9318328103` | |
+| Prasant | Core committee | `football` | `9599355640` | |
+| Sambav | Hospitality & Reception | `football` | `8376867400` | |
+| Hari Krishna K | Media, IT | `athletics` | `8287383701` | |
+| Aryan Dhiman | Logistic & venue | `lawn-tennis` | `9354866502` | |
+| Arpit Lohan | Discipline | `kabaddi` | `8708142300` | |
+| Kunal Arya | Technical | `badminton` | `8630029040` | |
+
+---
+
+## 9. Tab 8: `Gallery` (Photo Highlights)
 
 Photos displayed in the [`/gallery`](https://arena-2026-dtu.vercel.app/gallery) grid.
 
@@ -215,7 +241,7 @@ Photos displayed in the [`/gallery`](https://arena-2026-dtu.vercel.app/gallery) 
 
 ---
 
-## 9. Tab 8: `Announcements` (Timestamped Log)
+## 10. Tab 9: `Announcements` (Timestamped Log)
 
 A chronological log of festival notices and venue updates.
 
@@ -227,7 +253,7 @@ A chronological log of festival notices and venue updates.
 
 ---
 
-## 10. Tab 9: `Check` (Automatic Validation Formulas)
+## 11. Tab 10: `Check` (Automatic Validation Formulas)
 
 Paste these formulas into row 2 of their respective sheets to catch mistakes in real time:
 
@@ -241,7 +267,7 @@ Paste these formulas into row 2 of their respective sheets to catch mistakes in 
 
 ---
 
-## 11. Troubleshooting & Common Mistakes
+## 12. Troubleshooting & Common Mistakes
 
 | Problem | Root Cause | Solution |
 | :--- | :--- | :--- |
@@ -250,3 +276,4 @@ Paste these formulas into row 2 of their respective sheets to catch mistakes in 
 | **Match still on Schedule page after ending** | `winner` cell is empty. | Set Column L (`winner`) to `A`, `B`, `Draw`, or `No result`. |
 | **Match doesn't show under a sport** | `sport_id` typo. | Ensure `sport_id` is exact lowercase (e.g., `table-tennis`, NOT `Table Tennis`). |
 | **Ribbon bar won't disappear** | Text still present in `Config`. | Delete the text in `announcement_ribbon_text` cell or type `off`. |
+

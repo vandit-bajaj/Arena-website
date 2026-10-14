@@ -16,6 +16,8 @@ import {
   Match,
   CoordinatorSchema,
   Coordinator,
+  VolunteerSchema,
+  Volunteer,
   GallerySchema,
   GalleryItem,
   AnnouncementSchema,
@@ -29,6 +31,7 @@ export interface ArenaData {
   players: Player[];
   matches: Match[];
   coordinators: Coordinator[];
+  volunteers: Volunteer[];
   gallery: GalleryItem[];
   announcements: Announcement[];
 }
@@ -114,6 +117,19 @@ async function fetchSheetRows(tabName: string): Promise<Record<string, string>[]
         relax_column_count: true,
         skip_records_with_error: true,
       }) as Record<string, string>[];
+
+      // If Google Sheets couldn't find the tab, it returns the first tab (Config)
+      if (
+        tabName !== 'Config' &&
+        records.length > 0 &&
+        'key' in records[0] &&
+        'value' in records[0]
+      ) {
+        throw new Error(
+          `Tab "${tabName}" does not exist in spreadsheet (Google Sheets returned default Config tab).`
+        );
+      }
+
       return records;
     }
   } catch (error) {
@@ -348,6 +364,37 @@ export async function getCoordinators(): Promise<Coordinator[]> {
 }
 
 /**
+ * Fetch and parse Volunteers
+ */
+export async function getVolunteers(): Promise<Volunteer[]> {
+  try {
+    const rawRows = await fetchSheetRows('Volunteers');
+    const volunteers: Volunteer[] = [];
+
+    for (const row of rawRows) {
+      const parsed = VolunteerSchema.safeParse(row);
+      if (parsed.success) {
+        volunteers.push(parsed.data);
+      } else {
+        console.warn('[Sheets] Skipping malformed Volunteer row:', row, parsed.error.format());
+      }
+    }
+
+    lastGoodDataCache.volunteers = volunteers;
+    return volunteers;
+  } catch (err) {
+    console.warn('[Sheets] getVolunteers fallback triggered:', err);
+    return lastGoodDataCache.volunteers || [];
+  }
+}
+
+let detectedGalleryDriveUrl = '';
+
+export function getDetectedGalleryDriveUrl(): string {
+  return detectedGalleryDriveUrl;
+}
+
+/**
  * Fetch and parse Gallery
  */
 export async function getGallery(): Promise<GalleryItem[]> {
@@ -358,6 +405,25 @@ export async function getGallery(): Promise<GalleryItem[]> {
     for (const row of rawRows) {
       const parsed = GallerySchema.safeParse(row);
       if (parsed.success) {
+        const fn = parsed.data.filename.trim();
+        // If user pasted a Google Drive folder URL in filename column, remember it as driveUrl
+        if (
+          fn.includes('drive.google.com/drive/folders/') ||
+          fn.includes('drive.google.com/drive/u/') ||
+          fn.includes('drive.google.com/folderview') ||
+          fn.includes('drive.google.com/open?id=')
+        ) {
+          detectedGalleryDriveUrl = fn;
+          continue;
+        }
+
+        // If it's an external web URL, ensure it's not a folder or web page
+        if (fn.startsWith('http://') || fn.startsWith('https://')) {
+          if (!/\.(jpg|jpeg|png|webp|gif|svg)($|\?)/i.test(fn)) {
+            continue;
+          }
+        }
+
         gallery.push(parsed.data);
       } else {
         console.warn('[Sheets] Skipping malformed Gallery row:', row, parsed.error.format());
@@ -408,6 +474,7 @@ export async function getAllArenaData(): Promise<ArenaData> {
     players,
     matches,
     coordinators,
+    volunteers,
     gallery,
     announcements,
   ] = await Promise.all([
@@ -417,6 +484,7 @@ export async function getAllArenaData(): Promise<ArenaData> {
     getPlayers(),
     getMatches(),
     getCoordinators(),
+    getVolunteers(),
     getGallery(),
     getAnnouncements(),
   ]);
@@ -428,6 +496,7 @@ export async function getAllArenaData(): Promise<ArenaData> {
     players,
     matches,
     coordinators,
+    volunteers,
     gallery,
     announcements,
   };

@@ -245,6 +245,19 @@ export const CoordinatorSchema = z.object({
 export type Coordinator = z.infer<typeof CoordinatorSchema>;
 
 // ==========================================
+// 6b. Volunteers Tab Schema
+// ==========================================
+export const VolunteerSchema = z.object({
+  name: z.string().trim().min(1, 'name is required'),
+  role: z.string().trim().default('Volunteer'),
+  sport_id: z.string().trim().default(''),
+  phone: z.string().trim().default(''),
+  email: z.string().trim().default(''),
+});
+
+export type Volunteer = z.infer<typeof VolunteerSchema>;
+
+// ==========================================
 // 7. Gallery Tab Schema
 // ==========================================
 export const GallerySchema = z.object({
