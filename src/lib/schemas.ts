@@ -209,7 +209,7 @@ export const MatchSchema = z.object({
   category: z.string().trim().default(''), // "Boys" | "Girls"
   round: z.string().trim().default(''), // "Round 1", "Quarterfinal", "Semi Final", "Final"
   team_a: z.string().trim().min(1, 'team_a is required'),
-  team_b: z.string().trim().min(1, 'team_b is required'),
+  team_b: z.string().trim().default(''),
   score_a: z.string().trim().default(''),
   score_b: z.string().trim().default(''),
   winner: z.preprocess((val) => {

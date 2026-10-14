@@ -5,6 +5,7 @@ import { Sport, Match, Player, Department } from '@/lib/schemas';
 import { MatchCard } from '@/components/MatchCard';
 import { EmptyState } from '@/components/EmptyState';
 import { Trophy, Calendar, Users, Shield } from 'lucide-react';
+import { normalizeDateKey, formatFriendlyDate } from '@/lib/utils';
 
 interface SportDetailViewProps {
   sport: Sport;
@@ -50,6 +51,31 @@ export function SportDetailView({
 
   const scheduledMatches = categoryMatches.filter((m) => m.status === 'Scheduled');
   const completedMatches = categoryMatches.filter((m) => m.status === 'Completed');
+
+  // Group scheduled matches date-wise
+  const groupedScheduledMatches = useMemo(() => {
+    const map = new Map<string, Match[]>();
+
+    scheduledMatches.forEach((m) => {
+      const key = normalizeDateKey(m.date) || 'tba';
+      if (!map.has(key)) {
+        map.set(key, []);
+      }
+      map.get(key)!.push(m);
+    });
+
+    const groups: { dateKey: string; friendlyTitle: string; matches: Match[] }[] = [];
+    const sortedKeys = Array.from(map.keys()).sort();
+    sortedKeys.forEach((key) => {
+      groups.push({
+        dateKey: key,
+        friendlyTitle: key === 'tba' ? 'Date To Be Announced' : formatFriendlyDate(key),
+        matches: map.get(key)!,
+      });
+    });
+
+    return groups;
+  }, [scheduledMatches]);
 
   const categoryPlayers = useMemo(() => {
     if (activeCategory === 'All') return players;
@@ -149,15 +175,35 @@ export function SportDetailView({
       <div>
         {activeTab === 'fixtures' && (
           <div>
-            {scheduledMatches.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {scheduledMatches.map((match) => (
-                  <MatchCard
-                    key={match.match_id}
-                    match={match}
-                    departments={departments}
-                    sports={[sport]}
-                  />
+            {groupedScheduledMatches.length > 0 ? (
+              <div className="space-y-8">
+                {groupedScheduledMatches.map((group) => (
+                  <div key={group.dateKey} className="space-y-4">
+                    <div className="flex items-center justify-between pb-2.5 border-b-2 border-slate-200">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-blue-900 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                          <Calendar className="w-4 h-4" />
+                        </div>
+                        <h3 className="font-display text-base sm:text-lg font-bold uppercase text-slate-900 tracking-wide">
+                          {group.friendlyTitle}
+                        </h3>
+                      </div>
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                        {group.matches.length} {group.matches.length === 1 ? 'fixture' : 'fixtures'}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {group.matches.map((match) => (
+                        <MatchCard
+                          key={match.match_id}
+                          match={match}
+                          departments={departments}
+                          sports={[sport]}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : (

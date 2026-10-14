@@ -23,6 +23,7 @@ import {
   AnnouncementSchema,
   Announcement,
 } from './schemas';
+import { normalizeDateKey, parseTimeToMinutes } from './utils';
 
 export interface ArenaData {
   config: SiteConfig;
@@ -329,6 +330,23 @@ export async function getMatches(): Promise<Match[]> {
         console.warn('[Sheets] Skipping malformed Match row:', row, parsed.error.format());
       }
     }
+
+    // Sort matches chronologically: Date first, then Time, then match_id
+    matches.sort((a, b) => {
+      const dateA = normalizeDateKey(a.date);
+      const dateB = normalizeDateKey(b.date);
+      if (dateA !== dateB) {
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return dateA.localeCompare(dateB);
+      }
+      const timeA = parseTimeToMinutes(a.time);
+      const timeB = parseTimeToMinutes(b.time);
+      if (timeA !== timeB) {
+        return timeA - timeB;
+      }
+      return a.match_id.localeCompare(b.match_id);
+    });
 
     lastGoodDataCache.matches = matches;
     return matches;
