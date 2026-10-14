@@ -124,6 +124,14 @@ export function Footer({ config }: FooterProps) {
               </li>
               <li>
                 <Link
+                  href="/rules"
+                  className="hover:text-blue-400 text-sky-200/90 font-medium transition-colors py-1 inline-block"
+                >
+                  Official Rulebook
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/doubts"
                   className="hover:text-blue-400 transition-colors py-1 inline-block"
                 >

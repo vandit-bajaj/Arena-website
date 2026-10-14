@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getSiteConfig } from '@/lib/sheets';
-import { Shield, MapPin, Calendar, Clock, Trophy } from 'lucide-react';
+import { Shield, MapPin, Calendar, Clock, Trophy, BookOpen, Download, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Arena 2026 | DTU Sports Complex',
@@ -121,6 +122,42 @@ export default async function AboutPage() {
               tracks, indoor sports arenas, and fitness complexes.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Rulebook Banner Card */}
+      <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="space-y-2 max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 text-xs font-bold uppercase tracking-wider">
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Tournament Guidelines</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-display font-black uppercase tracking-tight text-white">
+            Official Tournament Rulebook
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Read complete eligibility terms, knockout formats, scoring rules, overs, and the ARENA Cup points system.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+          <Link
+            href="/rules"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-colors min-h-[44px]"
+          >
+            <span>Explore Rules</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <a
+            href="/Rulebook.pdf"
+            download="ARENA_2026_Rulebook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 font-bold text-xs uppercase tracking-wider transition-colors min-h-[44px]"
+          >
+            <Download className="w-4 h-4 text-sky-300" />
+            <span>Download PDF</span>
+          </a>
         </div>
       </div>
     </div>

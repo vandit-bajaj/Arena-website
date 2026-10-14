@@ -12,6 +12,7 @@ import {
   Image as ImageIcon,
   Users,
   Info,
+  BookOpen,
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -28,6 +29,12 @@ const primaryLinks = [
 ];
 
 const moreLinks = [
+  {
+    href: '/rules',
+    label: 'Rulebook',
+    description: 'Official rules & points system',
+    icon: BookOpen,
+  },
   {
     href: '/gallery',
     label: 'Gallery',
