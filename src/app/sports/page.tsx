@@ -49,20 +49,20 @@ export default async function SportsPage() {
                 </div>
 
                 {sport.nos_of_players && (
-                  <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-900 text-xs font-semibold border border-blue-100">
-                    <Users className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-100 text-blue-950 text-xs font-bold border border-blue-200 shadow-2xs">
+                    <Users className="w-3.5 h-3.5 text-blue-700 shrink-0" />
                     <span>Squad: {sport.nos_of_players}</span>
                   </div>
                 )}
 
-                <div className="flex items-center gap-2 mt-3 text-xs font-semibold">
+                <div className="flex items-center gap-2 mt-3 text-xs font-bold">
                   {sport.has_boys === true && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                    <span className="px-2.5 py-0.5 rounded-lg bg-blue-600 text-white uppercase shadow-2xs">
                       Men
                     </span>
                   )}
                   {sport.has_girls === true && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-700 border border-pink-100">
+                    <span className="px-2.5 py-0.5 rounded-lg bg-pink-600 text-white uppercase shadow-2xs">
                       Women
                     </span>
                   )}

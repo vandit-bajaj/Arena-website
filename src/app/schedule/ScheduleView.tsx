@@ -151,8 +151,8 @@ export function ScheduleView({ matches, sports, departments }: ScheduleViewProps
                 <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                 <span>{day.label}</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-md ${
-                    isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
+                  className={`text-xs px-2.5 py-0.5 rounded-full font-bold transition-colors ${
+                    isSelected ? 'bg-white text-blue-950 shadow-xs' : 'bg-slate-200 text-slate-800'
                   }`}
                 >
                   {count}
@@ -251,7 +251,7 @@ export function ScheduleView({ matches, sports, departments }: ScheduleViewProps
                     </h3>
                   </div>
                 </div>
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-950 border border-blue-200 shadow-2xs">
                   {group.matches.length} {group.matches.length === 1 ? 'fixture' : 'fixtures'}
                 </span>
               </div>

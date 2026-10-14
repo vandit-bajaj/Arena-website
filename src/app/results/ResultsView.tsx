@@ -86,8 +86,8 @@ export function ResultsView({
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold uppercase tracking-wider">
-            <Trophy className="w-3.5 h-3.5 text-emerald-600" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-600 text-white border border-emerald-500 text-xs font-black uppercase tracking-wider shadow-xs">
+            <Trophy className="w-3.5 h-3.5 text-amber-300" />
             <span>{completedMatches.length} Matches Concluded</span>
           </span>
         </div>

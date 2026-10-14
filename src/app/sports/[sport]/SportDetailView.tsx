@@ -142,7 +142,16 @@ export function SportDetailView({
             }`}
           >
             <Calendar className="w-4 h-4 shrink-0" />
-            <span>Fixtures ({scheduledMatches.length})</span>
+            <span>Fixtures</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-bold transition-colors ${
+                activeTab === 'fixtures'
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-slate-200 text-slate-800'
+              }`}
+            >
+              {scheduledMatches.length}
+            </span>
           </button>
 
           <button
@@ -154,7 +163,16 @@ export function SportDetailView({
             }`}
           >
             <Trophy className="w-4 h-4 shrink-0" />
-            <span>Results ({completedMatches.length})</span>
+            <span>Results</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-bold transition-colors ${
+                activeTab === 'results'
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-slate-200 text-slate-800'
+              }`}
+            >
+              {completedMatches.length}
+            </span>
           </button>
 
           <button
@@ -166,7 +184,16 @@ export function SportDetailView({
             }`}
           >
             <Users className="w-4 h-4 shrink-0" />
-            <span>Teams ({participatingDepts.length})</span>
+            <span>Teams</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-bold transition-colors ${
+                activeTab === 'teams'
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-slate-200 text-slate-800'
+              }`}
+            >
+              {participatingDepts.length}
+            </span>
           </button>
         </nav>
       </div>
@@ -188,7 +215,7 @@ export function SportDetailView({
                           {group.friendlyTitle}
                         </h3>
                       </div>
-                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-950 border border-blue-200 shadow-2xs">
                         {group.matches.length} {group.matches.length === 1 ? 'fixture' : 'fixtures'}
                       </span>
                     </div>
@@ -264,7 +291,9 @@ export function SportDetailView({
                             <li key={i} className="py-1.5 flex justify-between">
                               <span className="font-medium text-slate-800">{p.player_name}</span>
                               {p.roll_no && (
-                                <span className="font-mono text-slate-400">{p.roll_no}</span>
+                                <span className="font-mono text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                                  {p.roll_no}
+                                </span>
                               )}
                             </li>
                           ))}

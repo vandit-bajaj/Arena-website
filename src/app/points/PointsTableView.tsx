@@ -195,33 +195,35 @@ export function PointsTableView({
                     {/* Rank */}
                     <td className="py-3.5 px-3 sm:px-4 text-center font-display font-black text-sm sm:text-base">
                       {isTop1 ? (
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400 text-slate-950 shadow-xs font-bold text-xs sm:text-sm">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400 text-amber-950 font-black text-xs sm:text-sm shadow-xs ring-2 ring-amber-500">
                           1
                         </span>
                       ) : isTop2 ? (
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-300 text-slate-900 shadow-xs font-bold text-xs sm:text-sm">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-300 text-slate-900 font-black text-xs sm:text-sm shadow-xs ring-2 ring-slate-400">
                           2
                         </span>
                       ) : isTop3 ? (
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-600/30 text-amber-900 shadow-xs font-bold text-xs sm:text-sm">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-700 text-white font-black text-xs sm:text-sm shadow-xs ring-2 ring-amber-600">
                           3
                         </span>
                       ) : (
-                        <span className="text-slate-500 font-semibold">{item.rank}</span>
+                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-700 font-bold text-xs border border-slate-200">
+                          {item.rank}
+                        </span>
                       )}
                     </td>
 
                     {/* Department Name */}
                     <td className="py-3.5 px-4">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center font-display font-black text-xs shrink-0">
+                        <div className="w-8 h-8 rounded-lg bg-blue-950 text-amber-300 border border-blue-900 flex items-center justify-center font-display font-black text-xs shrink-0 shadow-2xs">
                           {item.short_name.slice(0, 3)}
                         </div>
                         <div>
-                          <div className="font-semibold text-slate-900 leading-tight">
+                          <div className="font-bold text-slate-900 leading-tight">
                             {item.name}
                           </div>
-                          <span className="text-[11px] font-mono text-slate-400">
+                          <span className="text-[11px] font-mono font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
                             {item.dept_id}
                           </span>
                         </div>
@@ -229,28 +231,38 @@ export function PointsTableView({
                     </td>
 
                     {/* Played */}
-                    <td className="py-3.5 px-3 text-center font-medium text-slate-700">
-                      {item.played}
+                    <td className="py-3.5 px-3 text-center">
+                      <span className="inline-flex items-center justify-center min-w-[28px] px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
+                        {item.played}
+                      </span>
                     </td>
 
                     {/* Won */}
-                    <td className="py-3.5 px-3 text-center font-bold text-emerald-600">
-                      {item.won}
+                    <td className="py-3.5 px-3 text-center">
+                      <span className="inline-flex items-center justify-center min-w-[28px] px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold text-xs border border-emerald-300">
+                        {item.won}
+                      </span>
                     </td>
 
                     {/* Lost */}
-                    <td className="py-3.5 px-3 text-center font-medium text-rose-600">
-                      {item.lost}
+                    <td className="py-3.5 px-3 text-center">
+                      <span className="inline-flex items-center justify-center min-w-[28px] px-1.5 py-0.5 rounded-md bg-rose-50 text-rose-700 font-semibold text-xs border border-rose-200">
+                        {item.lost}
+                      </span>
                     </td>
 
                     {/* Drawn */}
-                    <td className="py-3.5 px-3 text-center font-medium text-slate-500">
-                      {item.drawn}
+                    <td className="py-3.5 px-3 text-center">
+                      <span className="inline-flex items-center justify-center min-w-[28px] px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 font-medium text-xs border border-slate-200">
+                        {item.drawn}
+                      </span>
                     </td>
 
                     {/* Points */}
-                    <td className="py-3.5 px-4 text-center font-display font-black text-base sm:text-lg text-blue-900 bg-blue-50/40">
-                      {item.points}
+                    <td className="py-3.5 px-4 text-center bg-blue-50/50">
+                      <span className="inline-flex items-center justify-center min-w-[36px] px-2.5 py-1 rounded-lg bg-blue-950 text-amber-300 font-black text-sm sm:text-base shadow-2xs border border-blue-900">
+                        {item.points}
+                      </span>
                     </td>
 
                     {/* Win % */}
@@ -269,8 +281,8 @@ export function PointsTableView({
                                 outcome === 'W'
                                   ? 'bg-emerald-600'
                                   : outcome === 'L'
-                                  ? 'bg-rose-500'
-                                  : 'bg-slate-400'
+                                  ? 'bg-rose-600'
+                                  : 'bg-slate-500'
                               }`}
                             >
                               {outcome}

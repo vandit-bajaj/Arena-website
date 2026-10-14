@@ -208,25 +208,25 @@ export default async function HomePage() {
 
               <div className="space-y-2 mt-3">
                 {sport.nos_of_players && (
-                  <div className="text-[11px] font-semibold text-blue-900/90 bg-blue-50/70 border border-blue-100 rounded-md px-2 py-1 flex items-center gap-1.5">
-                    <Users className="w-3 h-3 text-blue-600 shrink-0" />
+                  <div className="text-[11px] font-bold text-blue-950 bg-blue-100 border border-blue-200 rounded-md px-2 py-0.5 flex items-center gap-1.5 shadow-2xs">
+                    <Users className="w-3 h-3 text-blue-700 shrink-0" />
                     <span className="truncate">{sport.nos_of_players}</span>
                   </div>
                 )}
 
-                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500">
+                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold">
                   {sport.has_boys === true && (
-                    <span className="px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                    <span className="px-2 py-0.5 rounded-md bg-blue-600 text-white uppercase shadow-2xs">
                       Men
                     </span>
                   )}
                   {sport.has_girls === true && (
-                    <span className="px-1.5 py-0.5 rounded-md bg-pink-50 text-pink-700 border border-pink-100">
+                    <span className="px-2 py-0.5 rounded-md bg-pink-600 text-white uppercase shadow-2xs">
                       Women
                     </span>
                   )}
                   {sport.has_boys === null && sport.has_girls === null && (
-                    <span className="text-slate-400 italic">Categories TBA</span>
+                    <span className="text-slate-400 italic font-normal">Categories TBA</span>
                   )}
                 </div>
               </div>
@@ -330,35 +330,55 @@ export default async function HomePage() {
                       <tr key={item.dept_id} className="hover:bg-blue-50/30 transition-colors">
                         <td className="py-3 px-4 text-center font-display font-black text-sm">
                           {item.rank === 1 && item.points > 0 ? (
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-slate-950 text-xs font-bold">
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-amber-950 text-xs font-black ring-2 ring-amber-500 shadow-xs">
                               1
                             </span>
+                          ) : item.rank === 2 && item.points > 0 ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-900 text-xs font-black ring-2 ring-slate-400 shadow-xs">
+                              2
+                            </span>
+                          ) : item.rank === 3 && item.points > 0 ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-700 text-white text-xs font-black ring-2 ring-amber-600 shadow-xs">
+                              3
+                            </span>
                           ) : (
-                            <span className="text-slate-500 font-semibold">{item.rank}</span>
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-700 font-bold text-xs border border-slate-200">
+                              {item.rank}
+                            </span>
                           )}
                         </td>
                         <td className="py-3 px-4">
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-bold text-slate-900">
                             {item.name}
                           </div>
-                          <span className="text-[11px] font-mono text-slate-400">
+                          <span className="text-[11px] font-mono font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
                             {item.dept_id}
                           </span>
                         </td>
-                        <td className="py-3 px-3 text-center text-slate-600 font-medium">
-                          {item.played}
+                        <td className="py-3 px-3 text-center">
+                          <span className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
+                            {item.played}
+                          </span>
                         </td>
-                        <td className="py-3 px-3 text-center text-emerald-600 font-bold">
-                          {item.won}
+                        <td className="py-3 px-3 text-center">
+                          <span className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold text-xs border border-emerald-300">
+                            {item.won}
+                          </span>
                         </td>
-                        <td className="py-3 px-3 text-center text-rose-600 font-medium">
-                          {item.lost}
+                        <td className="py-3 px-3 text-center">
+                          <span className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-0.5 rounded-md bg-rose-50 text-rose-700 font-semibold text-xs border border-rose-200">
+                            {item.lost}
+                          </span>
                         </td>
-                        <td className="py-3 px-3 text-center text-slate-500">
-                          {item.drawn}
+                        <td className="py-3 px-3 text-center">
+                          <span className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 font-medium text-xs border border-slate-200">
+                            {item.drawn}
+                          </span>
                         </td>
-                        <td className="py-3 px-4 text-center font-display font-black text-blue-900 text-base sm:text-lg bg-blue-50/40">
-                          {item.points}
+                        <td className="py-3 px-4 text-center bg-blue-50/50">
+                          <span className="inline-flex items-center justify-center min-w-[34px] px-2 py-0.5 rounded-md bg-blue-950 text-amber-300 font-black text-sm shadow-2xs border border-blue-900">
+                            {item.points}
+                          </span>
                         </td>
                       </tr>
                     ))}

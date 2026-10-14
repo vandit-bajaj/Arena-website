@@ -399,26 +399,26 @@ export function ContactsView({
                   {/* Top Badges */}
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-black uppercase tracking-wider shadow-2xs border ${
                         isVolunteer
-                          ? 'bg-teal-50 text-teal-800 border-teal-200'
-                          : 'bg-blue-50 text-blue-800 border-blue-200'
+                          ? 'bg-teal-700 text-white border-teal-800'
+                          : 'bg-blue-900 text-white border-blue-950'
                       }`}
                     >
                       {isVolunteer ? (
                         <>
-                          <HeartHandshake className="w-3.5 h-3.5 text-teal-600" />
+                          <HeartHandshake className="w-3.5 h-3.5 text-teal-200" />
                           <span>Volunteer</span>
                         </>
                       ) : (
                         <>
-                          <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-sky-200" />
                           <span>Coordinator</span>
                         </>
                       )}
                     </span>
 
-                    <span className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/60 truncate">
+                    <span className="text-xs font-bold text-slate-900 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-300 truncate shadow-2xs">
                       {sportName}
                     </span>
                   </div>
@@ -428,8 +428,8 @@ export function ContactsView({
                     <div
                       className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${
                         isVolunteer
-                          ? 'bg-teal-50 text-teal-700'
-                          : 'bg-blue-50 text-blue-700'
+                          ? 'bg-teal-100 text-teal-800 border border-teal-200'
+                          : 'bg-blue-100 text-blue-800 border border-blue-200'
                       }`}
                     >
                       <User className="w-5 h-5" />
@@ -438,14 +438,16 @@ export function ContactsView({
                       <h3 className="font-display text-xl font-bold uppercase text-slate-900 tracking-wide leading-tight truncate">
                         {member.name}
                       </h3>
-                      <p className="text-xs font-semibold text-slate-600 mt-0.5">
-                        {member.role || (isVolunteer ? 'Volunteer' : 'Coordinator')}
-                      </p>
-                      {member.roll_no && (
-                        <p className="text-[11px] font-mono text-slate-500 mt-0.5">
-                          Roll: <span className="text-slate-800 font-semibold">{member.roll_no}</span>
-                        </p>
-                      )}
+                      <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-blue-50 text-blue-950 font-bold text-xs border border-blue-200">
+                          {member.role || (isVolunteer ? 'Volunteer' : 'Coordinator')}
+                        </span>
+                        {member.roll_no && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 font-mono text-xs font-bold border border-slate-300">
+                            Roll: {member.roll_no}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

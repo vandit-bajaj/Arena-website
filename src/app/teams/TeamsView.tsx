@@ -93,9 +93,19 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                     className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between"
                   >
                     <div>
-                      <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-                        <span className="font-semibold text-blue-700">{deptName}</span>
-                        <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[11px] font-medium">
+                      <div className="flex items-center justify-between text-xs mb-2">
+                        <span className="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-xs">
+                          {deptName}
+                        </span>
+                        <span
+                          className={`px-2.5 py-0.5 rounded-lg text-xs font-bold uppercase shadow-2xs ${
+                            player.category.toLowerCase().includes('girl') || player.category.toLowerCase().includes('women')
+                              ? 'bg-pink-600 text-white'
+                              : player.category.toLowerCase().includes('boy') || player.category.toLowerCase().includes('men')
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-purple-600 text-white'
+                          }`}
+                        >
                           {player.category}
                         </span>
                       </div>
@@ -103,13 +113,18 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                         {player.player_name}
                       </h4>
                       {player.roll_no && (
-                        <p className="text-xs font-mono text-slate-500 mt-0.5">
-                          Roll: {player.roll_no}
-                        </p>
+                        <div className="mt-1">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 font-mono text-xs font-bold border border-slate-300">
+                            Roll: {player.roll_no}
+                          </span>
+                        </div>
                       )}
                     </div>
-                    <div className="mt-3 pt-2 border-t border-slate-100 text-xs font-display font-semibold text-slate-600 uppercase">
-                      Sport: {sportName}
+                    <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                      <span className="text-slate-500 font-medium">Sport:</span>
+                      <span className="px-2 py-0.5 rounded-md bg-blue-950 text-white font-bold uppercase tracking-wider text-[11px] shadow-2xs">
+                        {sportName}
+                      </span>
                     </div>
                   </div>
                 );
@@ -208,12 +223,12 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                             {sport.name}
                           </h3>
                           {sport.nos_of_players && (
-                            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 border border-blue-200">
+                            <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-blue-950 text-white shadow-2xs">
                               {sport.nos_of_players}
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-slate-500 font-medium">
+                        <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 border border-slate-200">
                           {boysTeam.length + girlsTeam.length + otherTeam.length} Players
                         </span>
                       </div>
@@ -223,10 +238,10 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                         {/* Boys Category */}
                         <div className="space-y-3">
                           <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-blue-800">
+                            <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-blue-600 text-white font-display text-xs font-bold uppercase tracking-wider shadow-2xs">
                               Boys Team
-                            </h4>
-                            <span className="text-xs font-semibold text-slate-400">
+                            </span>
+                            <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-900 border border-blue-200">
                               {boysTeam.length > 0 ? `${boysTeam.length} members` : 'Unannounced'}
                             </span>
                           </div>
@@ -242,7 +257,7 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                                     {p.player_name}
                                   </span>
                                   {p.roll_no && (
-                                    <span className="font-mono text-xs text-slate-400">
+                                    <span className="font-mono text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                                       {p.roll_no}
                                     </span>
                                   )}
@@ -259,10 +274,10 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                         {/* Girls Category */}
                         <div className="space-y-3">
                           <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-pink-700">
+                            <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-pink-600 text-white font-display text-xs font-bold uppercase tracking-wider shadow-2xs">
                               Girls Team
-                            </h4>
-                            <span className="text-xs font-semibold text-slate-400">
+                            </span>
+                            <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-pink-50 text-pink-900 border border-pink-200">
                               {girlsTeam.length > 0 ? `${girlsTeam.length} members` : 'Unannounced'}
                             </span>
                           </div>
@@ -278,7 +293,7 @@ export function TeamsView({ departments, sports, players }: TeamsViewProps) {
                                     {p.player_name}
                                   </span>
                                   {p.roll_no && (
-                                    <span className="font-mono text-xs text-slate-400">
+                                    <span className="font-mono text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                                       {p.roll_no}
                                     </span>
                                   )}
