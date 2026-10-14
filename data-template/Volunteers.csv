@@ -1,21 +1,31 @@
-name,role,sport_id,phone,email
-Samarth,Core committee,cricket,7678633625,
-Harsh,Ceremonies Committee,cricket,9318328103,
-Prasant,Core committee,football,9599355640,
-Sambav,Hospitality & Reception,football,8376867400,
-Hari Krishna K,Media, IT,athletics,8287383701,
-Anuj,Media, IT,athletics,9729580554,
-Daksh,Hospitality & Reception,basketball,9625115623,
-Kirti Pandey,Ceremonies Committee,basketball,9661856094,
-Aryan Dhiman,Logistic & venue,lawn-tennis,9354866502,
-Anshu Bijarniya,Logistic & venue,volleyball,9636910645,
-Nandani Rohtagi,,volleyball,9711772714,
-Arpit Lohan,Discipline,kabaddi,8708142300,
-Abhinav Baliyan,Technical,kabaddi,6398131838,
-Kunal Arya,Technical,badminton,8630029040,
-Aazoo Kapoor,,badminton,9717170988,
-Manas,,table-tennis,9205657159,
-Dhruv,Discipline,table-tennis,9870447760,
-Divyansh,,chess,8076766833,
-Harshit Goyal,,chess,7982828597,
-Harishit Mishra,Discipline,,8595723004,
+name,role,sport_id,phone,email,roll_no
+Shrikant,DSM Volunteer Team,,9368121005,,25/DMBA/219
+Chaitanya Gupta,DSM Volunteer Team,,9711200320,,26/DMBA/54
+Yogita Rana,DSM Volunteer Team,,7289966177,,26/DMBA/270
+Archi,DSM Volunteer Team,,8130307710,,26/DMBA/028
+Anubhav Choudhary,DSM Volunteer Team,,9304594947,,26/DMBA/25
+Nitish Kr Sharma,DSM Volunteer Team,,6260666389,,26/DMBA/152
+Yugam Sachdeva,DSM Volunteer Team,,8287705408,,26/DMBA/271
+Arpit Tehlan,DSM Volunteer Team,,7982389301,,26/DMBA/32
+Mahika Kashyap,DSM Volunteer Team,,7303050473,,26/DMBA/123
+Aditya Singh Porte,DSM Volunteer Team,,7223076071,,26/DMBA/11
+Jasaswi Dash,DSM Volunteer Team,,8658773883,,26/DMBA/94
+Devyani,DSM Volunteer Team,,9110169272,,26/DMBA/59
+Yash Saini,DSM Volunteer Team,,9711636000,,26/DMBA/263
+Raghav Bajaj,Team N. Hooda,,9358115522,,26/B14/052
+Vishal Goutam,Team N. Hooda,,8448772553,,25/B08/055
+Priyanshu,Team N. Hooda,,7042915188,,25/A04/004
+Shaarav Pal,Team N. Hooda,,7899147943,,25/A13/027
+Mungur,Team N. Guliya,,8527374753,,23/CE/198
+Ayaaz Omar,Team N. Guliya,,7511121914,,25/ME/056
+Sohan Reddy,Team N. Guliya,,9949681602,,23/ME/306
+Hardik Tiwari,Team N. Guliya,,9354637620,,24/EE/100
+Arshabh Gupta,Team N. Guliya,,9811877678,,24/CH/014
+Sambhav Raghav,Team N. Guliya,,8376867400,,23/CS/372
+Ankit Prajapat,Team Prakirti,,9213797728,,25/SE/033
+Nikhil,Team Prakirti,,8222929875,,25/ME/174
+Mayank Chaudhary,Team Prakirti,,8527815891,,24/EE/162
+Daksh Singh,Team Prakirti,,9953299988,,25/ME/068
+Jatin Panghal,Team Prakirti,,8814825880,,25/A03/019
+Prince Kumar Singh,Team Prakirti,,8810349779,,25/EC/139
+Ravi Kumar,Team Prakirti,,9297782084,,26/B03/005

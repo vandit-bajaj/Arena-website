@@ -30,6 +30,7 @@ interface UnifiedMember {
   sport_id: string;
   phone: string;
   email: string;
+  roll_no: string;
   memberType: 'coordinator' | 'volunteer';
 }
 
@@ -54,6 +55,7 @@ export function ContactsView({
         sport_id: c.sport_id || '',
         phone: c.phone || '',
         email: c.email || '',
+        roll_no: c.roll_no || '',
         memberType: 'coordinator',
       });
     });
@@ -65,6 +67,7 @@ export function ContactsView({
         sport_id: v.sport_id || '',
         phone: v.phone || '',
         email: v.email || '',
+        roll_no: v.roll_no || '',
         memberType: 'volunteer',
       });
     });
@@ -116,7 +119,8 @@ export function ContactsView({
         const matchesRole = m.role.toLowerCase().includes(q);
         const matchesSport = sportName.toLowerCase().includes(q);
         const matchesPhone = m.phone.toLowerCase().includes(q);
-        if (!matchesName && !matchesRole && !matchesSport && !matchesPhone) {
+        const matchesRoll = m.roll_no.toLowerCase().includes(q);
+        if (!matchesName && !matchesRole && !matchesSport && !matchesPhone && !matchesRoll) {
           return false;
         }
       }
@@ -437,6 +441,11 @@ export function ContactsView({
                       <p className="text-xs font-semibold text-slate-600 mt-0.5">
                         {member.role || (isVolunteer ? 'Volunteer' : 'Coordinator')}
                       </p>
+                      {member.roll_no && (
+                        <p className="text-[11px] font-mono text-slate-500 mt-0.5">
+                          Roll: <span className="text-slate-800 font-semibold">{member.roll_no}</span>
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

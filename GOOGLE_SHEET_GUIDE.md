@@ -190,43 +190,44 @@ Controls both the **Schedule page** and the **Live Results page**.
 Displayed under the **Coordinators segment** on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
 
 ### Columns
-- `name` *(required)*: Full name of faculty, student coordinator, or convenor.
-- `role`: Role title (e.g., `Sports Secretary`, `Faculty Advisor`, `Cricket Coordinator`).
-- `sport_id`: Associated sport slug (or blank for General Council).
+- `name` *(required)*: Full name of coordinator or convenor.
+- `role`: Committee or role title (e.g., `Core committee`, `Ceremonies Committee`, `Media, IT`, `Discipline`, `Technical`).
+- `sport_id`: Associated sport slug (e.g., `cricket`, `football`, `athletics`, or blank).
 - `phone`: Mobile number. *(Format column as Plain Text!)*
-- `email`: Contact email address.
+- `email`: Contact email address (optional).
+- `roll_no`: DTU student roll number (optional). *(Format column as Plain Text!)*
 
 ### Example Rows
-| name | role | sport_id | phone | email |
-| :--- | :--- | :--- | :--- | :--- |
-| Dr. Rajeev Sharma | Faculty Advisor | | `+91 98765 43210` | `rajeev@dtu.ac.in` |
-| Aryan Kapoor | General Secretary | | `+91 98111 22334` | `sc_dtu@dtu.ac.in` |
-| Sahil Malik | Cricket Coordinator | `cricket` | `+91 99999 88888` | `cricket@dtu.ac.in` |
+| name | role | sport_id | phone | email | roll_no |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Samarth | Core committee | `cricket` | `7678633625` | | `23/BBA/135` |
+| Harsh | Ceremonies Committee | `cricket` | `9318328103` | | `24/NE/125` |
+| Prasant | Core committee | `football` | `9599355640` | | `25/CE/101` |
+| Sambav | Hospitality & Reception | `football` | `8376867400` | | `23/CS/372` |
+| Hari Krishna K | Media, IT | `athletics` | `8287383701` | | `25/DA/028` |
 
 ---
 
-## 8. Tab 7: `Volunteers` (Student Organizing Committees)
+## 8. Tab 7: `Volunteers` (Student Organizing Teams)
 
 Displayed under the **Volunteers segment** on the [`/contacts`](https://arena-2026-dtu.vercel.app/contacts) page.
 
 ### Columns
 - `name` *(required)*: Full name of student volunteer.
-- `role`: Committee or responsibility (e.g., `Core committee`, `Ceremonies Committee`, `Hospitality & Reception`, `Media, IT`, `Logistic & venue`, `Discipline`, `Technical`).
-- `sport_id`: Associated sport slug (or blank if general organizing committee).
+- `role`: Volunteer squad or assignment (e.g., `DSM Volunteer Team`, `Team N. Hooda`, `Team N. Guliya`, `Team Prakirti`).
+- `sport_id`: Associated sport slug (optional, or blank).
 - `phone`: Mobile number. *(Format column as Plain Text!)*
 - `email`: Contact email address (optional).
+- `roll_no`: DTU student roll number. *(Format column as Plain Text!)*
 
 ### Example Rows
-| name | role | sport_id | phone | email |
-| :--- | :--- | :--- | :--- | :--- |
-| Samarth | Core committee | `cricket` | `7678633625` | |
-| Harsh | Ceremonies Committee | `cricket` | `9318328103` | |
-| Prasant | Core committee | `football` | `9599355640` | |
-| Sambav | Hospitality & Reception | `football` | `8376867400` | |
-| Hari Krishna K | Media, IT | `athletics` | `8287383701` | |
-| Aryan Dhiman | Logistic & venue | `lawn-tennis` | `9354866502` | |
-| Arpit Lohan | Discipline | `kabaddi` | `8708142300` | |
-| Kunal Arya | Technical | `badminton` | `8630029040` | |
+| name | role | sport_id | phone | email | roll_no |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Shrikant | DSM Volunteer Team | | `9368121005` | | `25/DMBA/219` |
+| Chaitanya Gupta | DSM Volunteer Team | | `9711200320` | | `26/DMBA/54` |
+| Raghav Bajaj | Team N. Hooda | | `9358115522` | | `26/B14/052` |
+| Mungur | Team N. Guliya | | `8527374753` | | `23/CE/198` |
+| Ankit Prajapat | Team Prakirti | | `9213797728` | | `25/SE/033` |
 
 ---
 

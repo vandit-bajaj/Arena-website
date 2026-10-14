@@ -338,6 +338,23 @@ export async function getMatches(): Promise<Match[]> {
   }
 }
 
+function normalizeSportSlug(val: string): string {
+  if (!val) return '';
+  const clean = val.toLowerCase().trim();
+  if (clean.includes('cricket')) return 'cricket';
+  if (clean.includes('football')) return 'football';
+  if (clean.includes('basket')) return 'basketball';
+  if (clean.includes('voll')) return 'volleyball';
+  if (clean.includes('kabad')) return 'kabaddi';
+  if (clean.includes('lawn') || (clean.includes('tennis') && !clean.includes('table'))) return 'lawn-tennis';
+  if (clean.includes('badminton')) return 'badminton';
+  if (clean.includes('table') || clean.includes('tt')) return 'table-tennis';
+  if (clean.includes('chess')) return 'chess';
+  if (clean.includes('athletic')) return 'athletics';
+  if (clean.includes('tug')) return 'tug-of-war';
+  return clean.replace(/\s+/g, '-');
+}
+
 /**
  * Fetch and parse Coordinators
  */
@@ -347,7 +364,26 @@ export async function getCoordinators(): Promise<Coordinator[]> {
     const coordinators: Coordinator[] = [];
 
     for (const row of rawRows) {
-      const parsed = CoordinatorSchema.safeParse(row);
+      const name = (row.name || row['Name of coordinators'] || row['Name of Coordinator'] || row['Name'] || '').trim();
+      if (!name) continue;
+
+      const phone = (row.phone || row['Mob No'] || row['Mobile'] || row['Contact'] || '').trim();
+      const roll_no = (row.roll_no || row['Roll No'] || row['Roll Number'] || row['RollNo'] || '').trim();
+      const email = (row.email || row['Email'] || '').trim();
+      
+      const rawSport = row.sport_id || row.sport || row.Sport || (row.Derailment ? row.Remarks : '') || '';
+      const rawRole = row.role || row.Role || row.Derailment || row.Committee || (row.sport_id ? row.role : row.Remarks) || 'Coordinator';
+
+      const enriched = {
+        name,
+        role: rawRole.trim() || 'Coordinator',
+        sport_id: normalizeSportSlug(rawSport),
+        phone,
+        email,
+        roll_no,
+      };
+
+      const parsed = CoordinatorSchema.safeParse(enriched);
       if (parsed.success) {
         coordinators.push(parsed.data);
       } else {
@@ -372,7 +408,25 @@ export async function getVolunteers(): Promise<Volunteer[]> {
     const volunteers: Volunteer[] = [];
 
     for (const row of rawRows) {
-      const parsed = VolunteerSchema.safeParse(row);
+      const name = (row.name || row['Name of Volunteers'] || row['Name of Volunteer'] || row['Name'] || '').trim();
+      if (!name) continue;
+
+      const phone = (row.phone || row['Mob No'] || row['Mobile'] || row['Contact'] || '').trim();
+      const roll_no = (row.roll_no || row['Roll No'] || row['Roll Number'] || row['RollNo'] || '').trim();
+      const email = (row.email || row['Email'] || '').trim();
+      const rawRole = row.role || row.Role || row.Remarks || row.Team || 'Volunteer';
+      const rawSport = row.sport_id || row.sport || row.Sport || '';
+
+      const enriched = {
+        name,
+        role: rawRole.trim() || 'Volunteer',
+        sport_id: normalizeSportSlug(rawSport),
+        phone,
+        email,
+        roll_no,
+      };
+
+      const parsed = VolunteerSchema.safeParse(enriched);
       if (parsed.success) {
         volunteers.push(parsed.data);
       } else {

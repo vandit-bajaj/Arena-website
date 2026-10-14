@@ -1,1 +1,21 @@
-name,role,sport_id,phone,email
+name,role,sport_id,phone,email,roll_no
+Samarth,Core committee,cricket,7678633625,,23/BBA/135
+Harsh,Ceremonies Committee,cricket,9318328103,,24/NE/125
+Prasant,Core committee,football,9599355640,,25/CE/101
+Sambav,Hospitality & Reception,football,8376867400,,23/CS/372
+Hari Krishna K,"Media, IT",athletics,8287383701,,25/DA/028
+Anuj,"Media, IT",athletics,9729580554,,24/CS/080
+Daksh,Hospitality & Reception,basketball,9625115623,,24/AE/024
+Kirti Pandey,Ceremonies Committee,basketball,9661856094,,24/IT/090
+Aryan Dhiman,Logistic & venue,lawn-tennis,9354866502,,25/CS/071
+Anshu Bijarniya,Logistic & venue,volleyball,9636910645,,25/VL/007
+Nandani Rohtagi,Coordinator,volleyball,9711772714,,25/BBA/30
+Arpit Lohan,Discipline,kabaddi,8708142300,,24/EP/023
+Abhinav Baliyan,Technical,kabaddi,6398131838,,25/AE/002
+Kunal Arya,Technical,badminton,8630029040,,24/EN/032
+Aazoo Kapoor,Coordinator,badminton,9717170988,,24/MCE/004
+Manas,Coordinator,table-tennis,9205657159,,24/IT/107
+Dhruv,Discipline,table-tennis,9870447760,,24/CE/062
+Divyansh,Coordinator,chess,8076766833,,24/ME/161
+Harshit Goyal,Coordinator,chess,7982828597,,24/IT/069
+Harishit Mishra,Discipline & Code of Conduct,,8595723004,,24/CE/062

@@ -240,6 +240,7 @@ export const CoordinatorSchema = z.object({
   sport_id: z.string().trim().default(''),
   phone: z.string().trim().default(''),
   email: z.string().trim().default(''),
+  roll_no: z.string().trim().default(''),
 });
 
 export type Coordinator = z.infer<typeof CoordinatorSchema>;
@@ -253,6 +254,7 @@ export const VolunteerSchema = z.object({
   sport_id: z.string().trim().default(''),
   phone: z.string().trim().default(''),
   email: z.string().trim().default(''),
+  roll_no: z.string().trim().default(''),
 });
 
 export type Volunteer = z.infer<typeof VolunteerSchema>;
