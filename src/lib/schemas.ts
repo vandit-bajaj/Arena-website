@@ -179,6 +179,13 @@ export const OFFICIAL_GAMES_INFO: Record<
     has_girls: true,
     display_order: 11,
   },
+  powerlifting: {
+    name: 'Powerlifting',
+    nos_of_players: 'Open to all',
+    has_boys: true,
+    has_girls: true,
+    display_order: 12,
+  },
 };
 
 // ==========================================

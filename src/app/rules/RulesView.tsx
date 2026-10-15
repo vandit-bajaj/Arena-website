@@ -81,7 +81,7 @@ export function RulesView() {
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               Official eligibility criteria, knockout match formats, championship points distribution,
-              and disciplinary rules governing all 11 disciplines for Arena 2026.
+              and disciplinary rules governing all sanctioned disciplines for Arena 2026.
             </p>
           </div>
 

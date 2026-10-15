@@ -165,6 +165,35 @@ export async function getSiteConfig(): Promise<SiteConfig> {
   }
 }
 
+export function normalizeDeptAlias(val: string): string {
+  if (!val) return '';
+  const trimmed = val.trim();
+  const upper = trimmed.toUpperCase();
+  if (upper === 'CH') return 'AC';
+  if (upper === 'USME') return 'EAST';
+  if (upper === 'D.O.D' || upper === 'D.O.D.') return 'DOD';
+  return trimmed;
+}
+
+export function normalizeSportSlug(val: string): string {
+  if (!val) return '';
+  const clean = val.toLowerCase().trim();
+  if (clean.includes('powerlift')) return 'powerlifting';
+  if (clean.includes('cricket')) return 'cricket';
+  if (clean.includes('football')) return 'football';
+  if (clean.includes('basket')) return 'basketball';
+  if (clean.includes('voll')) return 'volleyball';
+  if (clean.includes('kabad')) return 'kabaddi';
+  if (clean.includes('lawn') || (clean.includes('tennis') && !clean.includes('table'))) return 'lawn-tennis';
+  if (clean.includes('badminton')) return 'badminton';
+  if (clean.includes('table') || clean.includes('tt')) return 'table-tennis';
+  if (clean.includes('chess')) return 'chess';
+  if (clean.includes('athletic')) return 'athletics';
+  if (clean.includes('carrom') || clean.includes('carom')) return 'carom';
+  if (clean.includes('tug')) return 'tug-of-war';
+  return clean.replace(/\s+/g, '-');
+}
+
 /**
  * Fetch and parse Departments
  */
@@ -180,6 +209,23 @@ export async function getDepartments(): Promise<Department[]> {
       } else {
         console.warn('[Sheets] Skipping malformed Department row:', row, parsed.error.format());
       }
+    }
+
+    // Ensure supplemental departments exist if entered separately in fixtures
+    const deptIds = new Set(departments.map((d) => d.dept_id.toUpperCase()));
+    if (!deptIds.has('HSS')) {
+      departments.push({
+        dept_id: 'HSS',
+        name: 'Humanities & Social Sciences',
+        short_name: 'HSS',
+      });
+    }
+    if (!deptIds.has('GST')) {
+      departments.push({
+        dept_id: 'GST',
+        name: 'Geospatial Science & Technology',
+        short_name: 'GST',
+      });
     }
 
     lastGoodDataCache.departments = departments;
@@ -293,7 +339,12 @@ export async function getPlayers(): Promise<Player[]> {
     const players: Player[] = [];
 
     for (const row of rawRows) {
-      const parsed = PlayerSchema.safeParse(row);
+      const enrichedRow = {
+        ...row,
+        dept_id: normalizeDeptAlias(row.dept_id || ''),
+        sport_id: normalizeSportSlug(row.sport_id || ''),
+      };
+      const parsed = PlayerSchema.safeParse(enrichedRow);
       if (parsed.success) {
         players.push(parsed.data);
       } else {
@@ -318,7 +369,13 @@ export async function getMatches(): Promise<Match[]> {
     const matches: Match[] = [];
 
     for (const row of rawRows) {
-      const parsed = MatchSchema.safeParse(row);
+      const enrichedRow = {
+        ...row,
+        team_a: normalizeDeptAlias(row.team_a || ''),
+        team_b: normalizeDeptAlias(row.team_b || ''),
+        sport_id: normalizeSportSlug(row.sport_id || ''),
+      };
+      const parsed = MatchSchema.safeParse(enrichedRow);
       if (parsed.success) {
         const raw = parsed.data;
         const status = raw.winner ? 'Completed' : 'Scheduled';
@@ -354,23 +411,6 @@ export async function getMatches(): Promise<Match[]> {
     console.warn('[Sheets] getMatches fallback triggered:', err);
     return lastGoodDataCache.matches || [];
   }
-}
-
-function normalizeSportSlug(val: string): string {
-  if (!val) return '';
-  const clean = val.toLowerCase().trim();
-  if (clean.includes('cricket')) return 'cricket';
-  if (clean.includes('football')) return 'football';
-  if (clean.includes('basket')) return 'basketball';
-  if (clean.includes('voll')) return 'volleyball';
-  if (clean.includes('kabad')) return 'kabaddi';
-  if (clean.includes('lawn') || (clean.includes('tennis') && !clean.includes('table'))) return 'lawn-tennis';
-  if (clean.includes('badminton')) return 'badminton';
-  if (clean.includes('table') || clean.includes('tt')) return 'table-tennis';
-  if (clean.includes('chess')) return 'chess';
-  if (clean.includes('athletic')) return 'athletics';
-  if (clean.includes('tug')) return 'tug-of-war';
-  return clean.replace(/\s+/g, '-');
 }
 
 /**

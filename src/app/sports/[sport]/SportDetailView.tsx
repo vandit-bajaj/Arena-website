@@ -44,9 +44,19 @@ export function SportDetailView({
   // Filter items by category
   const categoryMatches = useMemo(() => {
     if (activeCategory === 'All') return matches;
-    return matches.filter(
-      (m) => !m.category || m.category.toLowerCase() === activeCategory.toLowerCase()
-    );
+    const aCat = activeCategory.toLowerCase();
+    return matches.filter((m) => {
+      if (!m.category) return true;
+      const mCat = m.category.toLowerCase();
+      if (mCat === aCat) return true;
+      if (
+        (mCat.includes('men & women') || mCat.includes('all') || mCat.includes('mixed')) &&
+        (aCat.includes('boy') || aCat.includes('girl') || aCat.includes('men') || aCat.includes('women'))
+      ) {
+        return true;
+      }
+      return false;
+    });
   }, [matches, activeCategory]);
 
   const scheduledMatches = categoryMatches.filter((m) => m.status === 'Scheduled');

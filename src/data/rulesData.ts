@@ -283,4 +283,22 @@ export const SPORT_RULES: SportRule[] = [
       'Points scored in athletics finals contribute directly to the department’s overall ARENA Cup championship points.',
     ],
   },
+  {
+    sport_id: 'powerlifting',
+    name: 'Powerlifting',
+    governingBody: 'IPF / DTU Sports Council',
+    format: {
+      general: 'Single Open Event on Friday, 16th October 2026 • Weigh-in: 10:00 AM • Lifting Commences: 12:00 PM at DTU Gymnasium.',
+    },
+    rules: [
+      'The competition features three classic disciplines: Squat, Bench Press, and Deadlift.',
+      'Mandatory Weigh-in: All participants must report to the DTU Gymnasium at 10:00 AM for official weigh-in and rack height verification. Failure to weigh in disqualifies the participant.',
+      'Lifting Schedule: The competition officially commences at 12:00 PM.',
+      'Three Attempts: Each competitor is granted 3 attempts for each discipline. The maximum successful weight lifted in each discipline counts toward the final total score.',
+      'Judging & Commands: Lifters must strictly follow the head referee’s verbal and visual commands (e.g., "Squat" / "Rack", "Start" / "Press" / "Rack", "Down").',
+      'Tie-Breaker: In the event of a tie in the total weight lifted, the competitor with the lower recorded body weight at weigh-in shall be declared the winner.',
+      'Attire & Equipment: Standard athletic wear, non-supportive lifting belts, and approved wrist wraps are permitted. Supportive suits and knee wraps are strictly prohibited.',
+      'All lifts will be judged by the official refereeing panel under standard IPF guidelines. The decisions of the panel are final and binding.',
+    ],
+  },
 ];

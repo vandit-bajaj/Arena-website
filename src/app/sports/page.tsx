@@ -6,7 +6,7 @@ import { ArrowRight, Trophy, Calendar, Users } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Tournament Sports | Arena 2026',
   description:
-    'Explore the 11 sanctioned sports featured in Arena 2026: Cricket, Football, Basketball, Volleyball, Kabaddi, Lawn Tennis, Athletics, Badminton, Chess, Table Tennis, and Carom (Mixed).',
+    'Explore the sanctioned sports featured in Arena 2026: Cricket, Football, Basketball, Volleyball, Kabaddi, Lawn Tennis, Athletics, Badminton, Chess, Table Tennis, Carom (Mixed), and Powerlifting.',
 };
 
 export default async function SportsPage() {
@@ -22,7 +22,7 @@ export default async function SportsPage() {
           Tournament Sports
         </h1>
         <p className="text-sm sm:text-base text-slate-600">
-          Eleven sanctioned events scheduled across the DTU Sports Complex during the 3-day sports fest.
+          Sanctioned events scheduled across the DTU Sports Complex during the 3-day sports fest.
         </p>
       </div>
 

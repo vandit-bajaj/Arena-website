@@ -1,5 +1,5 @@
 import { Match, Department, Sport } from '@/lib/schemas';
-import { Trophy, Clock, MapPin, Calendar, CheckCircle2, Award } from 'lucide-react';
+import { Trophy, Clock, MapPin, Calendar, CheckCircle2, Award, Dumbbell } from 'lucide-react';
 import { formatShortDate } from '@/lib/utils';
 
 interface MatchCardProps {
@@ -109,18 +109,24 @@ export function MatchCard({ match, departments = [], sports = [] }: MatchCardPro
       {/* Main Match Fixture & Scores */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
         {!match.team_b ? (
-          /* Single Event Banner (Athletics, etc.) */
+          /* Single Event Banner (Powerlifting, Athletics, etc.) */
           <div className="p-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
             <div className="flex items-center gap-3 flex-wrap">
               <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
-                <Award className="w-4 h-4" />
+                {match.sport_id === 'powerlifting' ? (
+                  <Dumbbell className="w-4 h-4" />
+                ) : (
+                  <Award className="w-4 h-4" />
+                )}
               </div>
               <div>
                 <span className="text-base sm:text-lg font-display font-black uppercase text-blue-950 tracking-wide block">
                   {deptAName}
                 </span>
                 <span className="text-xs text-slate-500 font-semibold">
-                  Track & Field Event • All Departments
+                  {match.sport_id === 'powerlifting'
+                    ? 'Powerlifting Competition • DTU Gymnasium'
+                    : 'Track & Field Event • All Departments'}
                 </span>
               </div>
             </div>
