@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getSiteConfig } from '@/lib/sheets';
-import { Shield, MapPin, Calendar, Clock, Trophy, BookOpen, Download, ArrowRight } from 'lucide-react';
+import { Shield, MapPin, Calendar, Clock, Trophy, BookOpen, Download, ArrowRight, Code2, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Arena 2026 | DTU Sports Complex',
@@ -159,6 +159,39 @@ export default async function AboutPage() {
             <span>Download PDF</span>
           </a>
         </div>
+      </div>
+
+      {/* Developer & Digital Platform Credits */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0 shadow-2xs">
+            <Code2 className="w-6 h-6" />
+          </div>
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+              Digital Platform & Engineering
+            </span>
+            <h3 className="font-display text-lg sm:text-xl font-bold uppercase text-slate-900 tracking-wide mt-0.5">
+              Developed by Vandit Bajaj
+            </h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Designed & developed for the DTU Sports Council and Arena 2026.
+            </p>
+          </div>
+        </div>
+
+        <a
+          href="https://www.linkedin.com/in/vandit-bajaj-373829209/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all min-h-[44px] shrink-0"
+        >
+          <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 0 0-1.66 1.66 1.66 1.66 0 0 0 1.66 1.66 1.66 1.66 0 0 0 1.66-1.66c0-.92-.74-1.66-1.66-1.66Z" />
+          </svg>
+          <span>Connect on LinkedIn</span>
+          <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+        </a>
       </div>
     </div>
   );

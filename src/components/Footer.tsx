@@ -188,9 +188,21 @@ export function Footer({ config }: FooterProps) {
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright & Developer Credit */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
           <p>© 2026 {config.footer_note}. All rights reserved.</p>
+          <p className="flex items-center gap-1.5 text-xs text-slate-400">
+            <span>Designed & Developed by</span>
+            <a
+              href="https://www.linkedin.com/in/vandit-bajaj-373829209/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sky-400 hover:text-sky-300 font-semibold underline decoration-sky-400/40 hover:decoration-sky-300 transition-colors inline-flex items-center gap-1"
+            >
+              <span>Vandit Bajaj</span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
+            </a>
+          </p>
           <p className="font-mono text-[11px] text-slate-500">
             Arena 2026 • 16, 17 & 18 October 2026
           </p>
