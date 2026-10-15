@@ -102,10 +102,10 @@ async function fetchSheetRows(tabName: string): Promise<Record<string, string>[]
       }
       return records;
     } else {
-      // 2. Google Sheets Public CSV Export Endpoint
+      // 2. Google Sheets Public CSV Export Endpoint (headers=1 forces row 1 as single header)
       const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(
         tabName
-      )}`;
+      )}&headers=1`;
       const res = await fetch(url, { next: { revalidate: 60 } });
       if (!res.ok) {
         throw new Error(`Google Sheets CSV export returned status ${res.status}: ${res.statusText}`);
