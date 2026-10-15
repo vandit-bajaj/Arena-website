@@ -235,7 +235,7 @@ export function RulesView() {
             onClick={() => setShowAllGeneral(!showAllGeneral)}
             className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 hover:text-blue-800 cursor-pointer min-h-[44px]"
           >
-            <span>{showAllGeneral ? 'Collapse Rules' : 'Expand All (10 Rules)'}</span>
+            <span>{showAllGeneral ? 'Collapse Rules' : `Expand All (${GENERAL_RULES.length} Rules)`}</span>
             {showAllGeneral ? (
               <ChevronUp className="w-4 h-4" />
             ) : (
