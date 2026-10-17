@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getSiteConfig } from '@/lib/sheets';
+import { TrophyShowcase } from '@/components/TrophyShowcase';
 import { Shield, MapPin, Calendar, Clock, Trophy, BookOpen, Download, ArrowRight, Code2, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -124,6 +125,9 @@ export default async function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Official ARENA 2026 Trophy Showcase */}
+      <TrophyShowcase />
 
       {/* Rulebook Banner Card */}
       <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">

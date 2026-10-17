@@ -506,6 +506,19 @@ export function getDetectedGalleryDriveUrl(): string {
   return detectedGalleryDriveUrl;
 }
 
+export const ARENA_TROPHY_GALLERY_ITEMS: GalleryItem[] = [
+  {
+    filename: 'arena-2026-trophy-poster.jpg',
+    caption: 'Champion of Arena 2026 • Official Championship Trophy Poster',
+    year: '2026',
+  },
+  {
+    filename: 'arena-2026-trophy-photo.jpg',
+    caption: 'Official ARENA 2026 Winner Cup • DTU Sports Council',
+    year: '2026',
+  },
+];
+
 /**
  * Fetch and parse Gallery
  */
@@ -536,17 +549,26 @@ export async function getGallery(): Promise<GalleryItem[]> {
           }
         }
 
+        // Avoid duplicate trophy photos if sheet also lists them
+        if (
+          fn === 'arena-2026-trophy-poster.jpg' ||
+          fn === 'arena-2026-trophy-photo.jpg'
+        ) {
+          continue;
+        }
+
         gallery.push(parsed.data);
       } else {
         console.warn('[Sheets] Skipping malformed Gallery row:', row, parsed.error.format());
       }
     }
 
-    lastGoodDataCache.gallery = gallery;
-    return gallery;
+    const fullGallery = [...ARENA_TROPHY_GALLERY_ITEMS, ...gallery];
+    lastGoodDataCache.gallery = fullGallery;
+    return fullGallery;
   } catch (err) {
     console.warn('[Sheets] getGallery fallback triggered:', err);
-    return lastGoodDataCache.gallery || [];
+    return lastGoodDataCache.gallery || ARENA_TROPHY_GALLERY_ITEMS;
   }
 }
 

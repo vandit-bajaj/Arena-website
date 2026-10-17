@@ -6,6 +6,7 @@ import { Countdown } from '@/components/Countdown';
 import { MatchCard } from '@/components/MatchCard';
 import { EmptyState } from '@/components/EmptyState';
 import { InstagramIcon } from '@/components/InstagramIcon';
+import { TrophyShowcase } from '@/components/TrophyShowcase';
 import {
   Calendar,
   MapPin,
@@ -170,6 +171,11 @@ export default async function HomePage() {
             </span>
           )}
         </div>
+      </section>
+
+      {/* 3.5. Championship Trophy Showcase */}
+      <section className="pt-8 sm:pt-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <TrophyShowcase />
       </section>
 
       {/* 4. The 9 Sports Grid */}
